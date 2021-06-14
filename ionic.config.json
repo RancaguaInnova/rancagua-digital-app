@@ -1,0 +1,7 @@
+{
+  "name": "rancagua-digital-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
