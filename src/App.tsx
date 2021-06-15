@@ -30,16 +30,10 @@ import InformationPage from "./pages/Information"
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      {/*       <MainTabs></MainTabs>
-       */}
       <Menu />
       <IonRouterOutlet id="main">
         <Route path="/tabs" component={MainTabs} />
-        <Route path="/home" component={Home} exact={true} />
-        <Route path="/calendar" component={CalendarPage} exact={true} />
-        <Route path="/services" component={ServicesPage} exact={true} />
-        <Route path="/information" component={InformationPage} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Route exact path="/" render={() => <Redirect to="/tabs" />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

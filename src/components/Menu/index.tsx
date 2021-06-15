@@ -10,7 +10,7 @@ import {
   IonLabel,
   IonIcon,
 } from "@ionic/react"
-import { calendar, cube, home, information } from "ionicons/icons"
+import { calendar, cube, home, information, logIn } from "ionicons/icons"
 import React from "react"
 
 export const Menu = () => {
@@ -55,6 +55,11 @@ export const Menu = () => {
               <IonIcon icon={information} slot="start" />
 
               <IonLabel>Información</IonLabel>
+            </IonItem>
+            <IonItem button routerLink={"/tabs/login"} routerDirection="none">
+              <IonIcon icon={logIn} slot="start" />
+
+              <IonLabel>Login</IonLabel>
             </IonItem>
           </IonMenuToggle>
         </IonList>

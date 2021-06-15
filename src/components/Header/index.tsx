@@ -19,10 +19,13 @@ const Header: FC<HeaderProps> = ({ title }) => {
 
   useEffect(() => {
     let mediaQuery = window.matchMedia("(min-width: 768px)")
-    mediaQuery.addListener(setMQuery)
-
-    // this is the cleanup function to remove the listener
-    return () => mediaQuery.removeListener(setMQuery)
+    mediaQuery.addEventListener("change", (e) => {
+      setMQuery(e)
+    })
+    return () =>
+      mediaQuery.removeEventListener("change", (e) => {
+        setMQuery(e)
+      })
   }, [])
 
   return (
@@ -33,9 +36,13 @@ const Header: FC<HeaderProps> = ({ title }) => {
             <IonMenuButton />
           ) : (
             <>
-              <IonButton routerLink={"/home"}>Home </IonButton>
-              <IonButton routerLink={"/tab2"}>One </IonButton>
-              <IonButton routerLink={"/tab3"}>Two</IonButton>
+              <IonButton routerLink={"/tabs/home"}>Inicio </IonButton>
+              <IonButton routerLink={"/tabs/calendar"}>Calendario </IonButton>
+              <IonButton routerLink={"/tabs/services"}>Servicios</IonButton>
+              <IonButton routerLink={"/tabs/information"}>
+                Información
+              </IonButton>
+              <IonButton routerLink={"/tabs/login"}>Login</IonButton>
             </>
           )}{" "}
         </IonButtons>
