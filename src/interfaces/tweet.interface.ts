@@ -3,7 +3,7 @@ export interface ResponseTwitter {
 }
 
 export interface Tweet {
-  created_at: Date
+  created_at: string
   author_id: string
   text: string
   id: string
@@ -17,11 +17,6 @@ export interface Attachments {
 export interface MediaKey {
   media_key: string
   preview_image_url?: string
-  type: Type
+  type: string
   url?: string
-}
-
-export enum Type {
-  Photo = "photo",
-  Video = "video",
 }
