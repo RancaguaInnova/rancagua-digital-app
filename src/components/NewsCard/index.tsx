@@ -7,6 +7,8 @@ import {
 } from "@ionic/react"
 import { FC } from "react"
 import { Tweet } from "../../interfaces/tweet.interface"
+import Linkify from "react-linkify"
+
 import "./styles.scss"
 
 interface NewsCardProps {
@@ -25,7 +27,17 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
         )}
       </IonCardHeader>
 
-      <IonCardContent>{tweet.text}</IonCardContent>
+      <IonCardContent>
+        <Linkify
+          componentDecorator={(decoratedHref, decoratedText, key) => (
+            <a target="blank" href={decoratedHref} key={key}>
+              {decoratedText}
+            </a>
+          )}
+        >
+          {tweet.text}
+        </Linkify>
+      </IonCardContent>
     </IonCard>
   )
 }
