@@ -17,8 +17,7 @@ import "@ionic/react/css/text-transformation.css"
 import "@ionic/react/css/flex-utils.css"
 import "@ionic/react/css/display.css"
 
-/* boostrap*/
-import "bootstrap/dist/css/bootstrap.min.css"
+import "antd/dist/antd.css" // or 'antd/dist/antd.less'
 
 /* Theme variables */
 import "./theme/variables.scss"

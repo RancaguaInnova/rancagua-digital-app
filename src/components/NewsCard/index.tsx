@@ -22,7 +22,14 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
           <img
             className="card-img-top"
             src={tweet.attachments?.media_keys[0]?.url || ""}
-            alt="Card image cap"
+            alt=""
+          />
+        )}
+        {tweet.attachments?.media_keys[0]?.type === "video" && (
+          <img
+            className="card-img-top"
+            src={tweet.attachments?.media_keys[0]?.preview_image_url || ""}
+            alt=""
           />
         )}
       </IonCardHeader>
