@@ -48,7 +48,7 @@ const Header: FC<HeaderProps> = ({ title }) => {
           )}{" "}
         </IonButtons>
         <IonTitle>
-          <img src="assets/icon/logo.png" height="40"></img>
+          <img src="assets/icon/logo.png" height="35"></img>
         </IonTitle>
       </IonToolbar>
     </IonHeader>
