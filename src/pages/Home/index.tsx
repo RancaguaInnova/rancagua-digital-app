@@ -11,7 +11,14 @@ import Header from "../../components/Header"
 import { Tweet } from "../../interfaces/tweet.interface"
 import { useEffect } from "react"
 import NewsCard from "../../components/NewsCard"
-
+import { Col, Row } from "antd"
+import { Typography } from "antd"
+import styled from "styled-components"
+const { Title } = Typography
+const TitleStyled = styled(Title)`
+  text-align: center;
+  margin-top: 10px;
+`
 const HomePage: React.FC = () => {
   const tweets: Tweet[] = [
     {
@@ -373,10 +380,16 @@ const HomePage: React.FC = () => {
             <IonTitle size="large">Inicio</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <h3 className="title mt-2 text-center">Noticias</h3>
-        {tweets.map((tweet, index) => (
-          <NewsCard tweet={tweet} key={index}></NewsCard>
-        ))}
+
+        <TitleStyled level={3}>Noticias</TitleStyled>
+
+        <Row gutter={8}>
+          {tweets.map((tweet, index) => (
+            <Col xs={24} sm={24} md={12} lg={8} span={8} key={index}>
+              <NewsCard tweet={tweet}></NewsCard>
+            </Col>
+          ))}
+        </Row>
       </IonContent>
     </IonPage>
   )
