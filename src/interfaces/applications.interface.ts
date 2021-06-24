@@ -9,7 +9,7 @@ export interface ResponseApplications {
 export interface Application {
   developerInfo: DeveloperInfo
   userFields: string[]
-  roles: string[]
+  roles?: string[]
   name: string
   description: string
   approved: boolean
@@ -39,21 +39,15 @@ export interface Address {
   streetName?: string
   streetNumber?: number
   departmentNumber?: null | string
-  city?: AdministrativeAreaLevel2
+  city?: string
   postalCode?: null | string
   formatted_address?: string
   place_id?: string
   latitude?: number
   longitude?: number
   administrativeAreaLevel1?: string
-  administrativeAreaLevel2?: AdministrativeAreaLevel2
+  administrativeAreaLevel2?: string
   country?: string
-}
-
-export enum AdministrativeAreaLevel2 {
-  AdministrativeAreaLevel2Rancagua = "rancagua",
-  Rancagua = "Rancagua",
-  Santiago = "Santiago",
 }
 
 export interface Phone {

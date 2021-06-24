@@ -55,22 +55,6 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
         <p></p>
         <Meta title="" description={moment(tweet.created_at).fromNow()} />
       </CardStyled>
-      {/* ,
-      <IonCard>
-        <IonCardHeader></IonCardHeader>
-
-        <IonCardContent>
-          <Linkify
-            componentDecorator={(decoratedHref, decoratedText, key) => (
-              <a target="blank" href={decoratedHref} key={key}>
-                {decoratedText}
-              </a>
-            )}
-          >
-            {tweet.text}
-          </Linkify>
-        </IonCardContent>
-      </IonCard> */}
     </>
   )
 }

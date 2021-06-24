@@ -29,16 +29,23 @@ import ServicesPage from "./pages/Services"
 import CalendarPage from "./pages/Calendar"
 import InformationPage from "./pages/Information"
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <Menu />
-      <IonRouterOutlet id="main">
-        <Route path="/tabs" component={MainTabs} />
-        <Route exact path="/" render={() => <Redirect to="/tabs" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-)
+import { useEffect } from "react"
+import { Provider } from "react-redux"
+import { store } from "./providers/store"
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <Provider store={store}>
+        <IonReactRouter>
+          <Menu />
+          <IonRouterOutlet id="main">
+            <Route path="/tabs" component={MainTabs} />
+            <Route exact path="/" render={() => <Redirect to="/tabs" />} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </Provider>
+    </IonApp>
+  )
+}
 
 export default App
