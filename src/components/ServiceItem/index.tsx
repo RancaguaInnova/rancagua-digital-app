@@ -1,7 +1,7 @@
 import { List, Avatar } from "antd"
 import { FC } from "react"
 import InfiniteScroll from "react-infinite-scroller"
-import { Application } from "../../interfaces/applications.interface"
+import { Application } from "../../interfaces/applications"
 import styled from "styled-components"
 import { ArrowRightOutlined } from "@ant-design/icons"
 interface ServiceItemProps {

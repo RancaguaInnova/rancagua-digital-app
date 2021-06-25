@@ -1,8 +1,8 @@
-import { types } from "../types"
+import types from "../types"
 
 export const login = (uid: string, displayName: string, email: string) => {
   return {
-    type: types.login,
+    type: types.LOGIN,
     payload: {
       uid,
       displayName,

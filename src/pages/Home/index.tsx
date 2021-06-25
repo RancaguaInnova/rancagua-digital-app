@@ -8,23 +8,22 @@ import {
 import ExploreContainer from "../../components/ExploreContainer"
 import "./styles.scss"
 import Header from "../../components/Header"
-import { Tweet } from "../../interfaces/tweet.interface"
+import { Tweet } from "../../interfaces/tweet"
 import { useEffect } from "react"
 import NewsCard from "../../components/NewsCard"
 import { Col, Row } from "antd"
 import TitleStyled from "../../components/Title"
-import { GetListTweets } from "../../providers/actions/tweets"
+import { GetListTweets } from "../../providers/actions/tweet"
 import { useDispatch, useSelector } from "react-redux"
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch()
   const { tweets } = useSelector((state: any) => state.tweet)
-
   const listado: Tweet[] = tweets || []
   useEffect(() => {
     dispatch(GetListTweets())
     return () => {}
-  }, [])
+  }, [dispatch])
   return (
     <IonPage>
       <Header title="Inicio"></Header>
