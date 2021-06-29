@@ -2,7 +2,7 @@ import { Typography } from "antd"
 import styled from "styled-components"
 const { Title } = Typography
 const TitleStyled = styled(Title)`
-  background: #ed1849;
+  background: darkslategrey;
   color: white !important;
   padding-left: 20px;
   line-height: 34px !important;
