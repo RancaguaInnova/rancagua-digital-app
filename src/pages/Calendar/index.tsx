@@ -19,7 +19,6 @@ import EventList from "../../components/EventList"
 const CalendarPage: React.FC = () => {
   const [value, setValue] = useState(moment(Date.now()))
   const onSelect = (newValue: Moment) => {
-    console.log("date selected ", value.format("DD-MM-YYYY"))
     setValue(newValue)
   }
   return (
@@ -34,8 +33,8 @@ const CalendarPage: React.FC = () => {
         </IonHeader>
         <Card>
           <Calendar
-            // dateCellRender={dateCellRender}
-            monthCellRender={monthCellRender}
+            dateCellRender={dateCellRender}
+            // monthCellRender={monthCellRender}
             onSelect={onSelect}
             locale={locale}
           />

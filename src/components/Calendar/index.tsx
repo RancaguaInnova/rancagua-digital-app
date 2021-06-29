@@ -35,13 +35,11 @@ function getListData(value: { date: () => any }) {
 function dateCellRender(value: any) {
   const listData = getListData(value)
   return (
-    <ul className="events">
+    <>
       {listData.map((item: any) => (
-        <li key={item.content}>
-          <Badge status={item.type} text={item.content} />
-        </li>
+        <Badge key={item.content} status={item.type} />
       ))}
-    </ul>
+    </>
   )
 }
 
