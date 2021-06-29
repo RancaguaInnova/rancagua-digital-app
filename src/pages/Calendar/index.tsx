@@ -15,6 +15,7 @@ import ExploreContainer from "../../components/ExploreContainer"
 import Header from "../../components/Header"
 import "./styles.scss"
 import EventList from "../../components/EventList"
+import TitleStyled from "../../components/Title"
 
 const CalendarPage: React.FC = () => {
   const [value, setValue] = useState(moment(Date.now()))
@@ -26,11 +27,8 @@ const CalendarPage: React.FC = () => {
       <Header title="Calendario"></Header>
 
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Calendario</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <TitleStyled level={3}>Calendario de Eventos</TitleStyled>
+
         <Card>
           <Calendar
             dateCellRender={dateCellRender}

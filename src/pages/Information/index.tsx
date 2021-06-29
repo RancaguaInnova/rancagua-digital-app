@@ -7,6 +7,7 @@ import {
 } from "@ionic/react"
 import ExploreContainer from "../../components/ExploreContainer"
 import Header from "../../components/Header"
+import Information from "../../components/Information"
 import "./styles.scss"
 
 const InformationPage: React.FC = () => {
@@ -20,7 +21,7 @@ const InformationPage: React.FC = () => {
             <IonTitle size="large">Información</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Información" />
+        <Information></Information>
       </IonContent>
     </IonPage>
   )

@@ -32,7 +32,7 @@ const ServicesPage: React.FC = () => {
       <Header title="Servicios"></Header>
 
       <IonContent fullscreen>
-        <TitleStyled level={3}>Servicios</TitleStyled>
+        <TitleStyled level={3}>Servicios Disponibles</TitleStyled>
         <MotionLayoutProvider>
           <Row gutter={8}>
             {listado.map((application, index) => {
