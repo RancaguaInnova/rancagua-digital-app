@@ -21,15 +21,11 @@ import "antd/dist/antd.css" // or 'antd/dist/antd.less'
 
 /* Theme variables */
 import "./theme/variables.scss"
+import "./index.scss"
 import MainTabs from "./components/MainTabs"
 import { Route, Redirect } from "react-router"
 import { Menu } from "./components/Menu"
-import Home from "./pages/Home"
-import ServicesPage from "./pages/Services"
-import CalendarPage from "./pages/Calendar"
-import InformationPage from "./pages/Information"
 
-import { useEffect } from "react"
 import { Provider } from "react-redux"
 import { store } from "./providers/store"
 const App: React.FC = () => {

@@ -9,11 +9,17 @@ import "./styles.scss"
 const idLocale = require("moment/locale/es")
 moment.updateLocale("es", idLocale)
 export const CardStyled = styled(Card)`
-  background: #fff;
-  color: #222;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-shadow: 10px 5px 5px #ddd;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  backdrop-filter: blur(5px);
 `
 
 interface NewsCardProps {
@@ -25,7 +31,6 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
     <>
       <CardStyled
         hoverable
-        style={{ width: "90%)", margin: "5%" }}
         cover={
           tweet.attachments?.media_keys[0]?.url ? (
             <img

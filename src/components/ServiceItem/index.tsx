@@ -9,13 +9,19 @@ interface ServiceItemProps {
 }
 const { Item } = List
 const ItemStyled = styled(Item)`
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  width: 95%;
-  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.15);
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+
   padding: 10px;
-  background: #e7f3f5;
+
+  backdrop-filter: blur(5px);
 `
 
 const ServiceItem: FC<ServiceItemProps> = ({ application }) => {
