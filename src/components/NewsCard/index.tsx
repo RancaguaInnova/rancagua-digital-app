@@ -13,6 +13,7 @@ export const CardStyled = styled(Card)`
   color: #222;
   border: 1px solid #ccc;
   border-radius: 15px;
+  box-shadow: 10px 5px 5px #ddd;
 `
 
 interface NewsCardProps {
