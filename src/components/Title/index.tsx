@@ -11,5 +11,6 @@ const TitleStyled = styled(Title)`
   font-size: 1rem !important;
   vertical-align: middle;
   height: 34px;
+  margin-bottom: 0px !important;
 `
 export default TitleStyled

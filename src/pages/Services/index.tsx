@@ -29,10 +29,9 @@ const ServicesPage: React.FC = () => {
   }, [dispatch])
   return (
     <IonPage>
-      <Header title="Servicios"></Header>
+      <Header title="Servicios Disponibles"></Header>
 
       <IonContent fullscreen>
-        <TitleStyled level={3}>Servicios Disponibles</TitleStyled>
         <MotionLayoutProvider>
           <Row gutter={8}>
             {listado.map((application, index) => {

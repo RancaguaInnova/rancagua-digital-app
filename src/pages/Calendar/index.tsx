@@ -24,11 +24,9 @@ const CalendarPage: React.FC = () => {
   }
   return (
     <IonPage>
-      <Header title="Calendario"></Header>
+      <Header title="Calendario de Eventos"></Header>
 
       <IonContent fullscreen>
-        <TitleStyled level={3}>Calendario de Eventos</TitleStyled>
-
         <Card>
           <Calendar
             dateCellRender={dateCellRender}

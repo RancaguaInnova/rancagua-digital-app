@@ -7,6 +7,7 @@ import {
   IonToolbar,
 } from "@ionic/react"
 import React, { FC, useEffect } from "react"
+import TitleStyled from "../Title"
 import "./styles.scss"
 
 interface HeaderProps {
@@ -50,7 +51,8 @@ const Header: FC<HeaderProps> = ({ title }) => {
         <IonTitle>
           <img src="assets/icon/logo.png" height="35"></img>
         </IonTitle>
-      </IonToolbar>
+      </IonToolbar>{" "}
+      <TitleStyled level={3}>{title}</TitleStyled>
     </IonHeader>
   )
 }

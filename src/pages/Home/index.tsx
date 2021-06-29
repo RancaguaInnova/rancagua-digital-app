@@ -26,10 +26,8 @@ const HomePage: React.FC = () => {
   }, [dispatch])
   return (
     <IonPage>
-      <Header title="Inicio"></Header>
+      <Header title="Noticias"></Header>
       <IonContent fullscreen>
-        <TitleStyled level={3}>Noticias</TitleStyled>
-
         <Row gutter={8}>
           {listado.map((tweet: any, index: number) => (
             <Col xs={24} sm={24} md={12} lg={8} span={8} key={index}>

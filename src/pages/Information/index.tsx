@@ -16,11 +16,6 @@ const InformationPage: React.FC = () => {
       <Header title="Información"></Header>
 
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Información</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <Information></Information>
       </IonContent>
     </IonPage>
