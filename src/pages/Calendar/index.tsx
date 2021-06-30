@@ -1,21 +1,12 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react"
+import { IonContent, IonPage } from "@ionic/react"
 import { Calendar, Card, Col, Row } from "antd"
 import moment, { Moment } from "moment"
 import { useState } from "react"
 import locale from "antd/es/date-picker/locale/es_ES"
-
-import { dateCellRender, monthCellRender } from "../../components/Calendar"
-import ExploreContainer from "../../components/ExploreContainer"
+import { dateCellRender } from "../../components/Calendar"
 import Header from "../../components/Header"
 import "./styles.scss"
 import EventList from "../../components/EventList"
-import TitleStyled from "../../components/Title"
 
 const CalendarPage: React.FC = () => {
   const [value, setValue] = useState(moment(Date.now()))

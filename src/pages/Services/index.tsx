@@ -1,10 +1,4 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react"
+import { IonContent, IonPage } from "@ionic/react"
 import { Col, Row } from "antd"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"

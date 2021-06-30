@@ -1,20 +1,12 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react"
-import ExploreContainer from "../../components/ExploreContainer"
+import { useEffect } from "react"
+import { IonContent, IonPage } from "@ionic/react"
+import { Col, Row } from "antd"
+import { useDispatch, useSelector } from "react-redux"
 import "./styles.scss"
 import Header from "../../components/Header"
 import { Tweet } from "../../interfaces/tweet"
-import { useEffect } from "react"
 import NewsCard from "../../components/NewsCard"
-import { Col, Row } from "antd"
-import TitleStyled from "../../components/Title"
 import { GetListTweets } from "../../providers/actions/tweet"
-import { useDispatch, useSelector } from "react-redux"
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch()
