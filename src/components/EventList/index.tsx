@@ -462,15 +462,12 @@ const eventList: Event[] = [
 const EventList: FC<EventListProps> = ({ date }) => {
   console.log("soy la fecha seleccionada", date.format("DD-MM-YYYY"))
   return (
-    <Card>
-      <Typography.Title level={5} type="success">
-        Mostrando los eventos del día :{date.format("DD-MM-YYYY")}
-      </Typography.Title>
-
+    <div>
+      Mostrando los eventos del día :{date.format("DD-MM-YYYY")}
       {eventList.map((item) => {
         return <EventCard event={item}></EventCard>
       })}
-    </Card>
+    </div>
   )
 }
 
