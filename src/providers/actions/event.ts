@@ -7,6 +7,7 @@ import { url } from "../urlprovider"
 axios.defaults.baseURL = url
 
 export const GetListEvents = () => {
+  console.log("test")
   return async (dispach: Dispatch) => {
     try {
       let events: Event[] = []
