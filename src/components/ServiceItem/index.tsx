@@ -28,8 +28,9 @@ const ServiceItem: FC<ServiceItemProps> = ({ application }) => {
   return (
     <ItemStyled>
       <List.Item.Meta
-        title={application.name}
+        title={`${application.name}`}
         description={application.description}
+        avatar={<Avatar src="/assets/icon/app.png" />}
       />
       <ArrowRightOutlined />
     </ItemStyled>
