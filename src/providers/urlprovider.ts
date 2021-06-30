@@ -1,1 +1,1 @@
-export const url = "http://services.smartrancagua.com"
+export const url = "https://services.smartrancagua.com"
