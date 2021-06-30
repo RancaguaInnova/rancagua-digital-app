@@ -1,7 +1,7 @@
-import { Card, Typography } from "antd"
+
 import { Moment } from "moment"
 import React, { FC } from "react"
-import { Event } from "../../interfaces/event"
+import { Event } from ".interfaces/event"
 import EventCard from "../EventCard"
 
 interface EventListProps {

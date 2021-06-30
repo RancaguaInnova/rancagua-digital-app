@@ -1,14 +1,14 @@
-import { Dispatch } from "redux"
-import { Application } from "../../interfaces/applications"
-import types from "../types"
-import axios from "axios"
-import { url } from "../urlprovider"
+import { Dispatch } from 'redux'
+import { Application } from 'interfaces/applications'
+import types from '../types'
+import axios from 'axios'
+import { url } from 'providers/urlprovider'
 
 axios.defaults.baseURL = url
 
 export const GetListApplications = () => {
   return async (dispach: Dispatch) => {
-    console.log("get GetListApplications")
+    console.log('get GetListApplications')
 
     try {
       let applications: Application[] = []
@@ -17,10 +17,10 @@ export const GetListApplications = () => {
         applications = data.rows
         dispach(applicationList(applications))
       } else {
-        console.log("status aplication get", status)
+        console.log('status aplication get', status)
       }
     } catch (error) {
-      console.log("llego al error")
+      console.log('llego al error')
       console.log(error)
     }
   }

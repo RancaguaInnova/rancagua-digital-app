@@ -1,6 +1,6 @@
 import { List, Avatar } from "antd"
 import { FC } from "react"
-import { Event } from "../../interfaces/event"
+import { Event } from "interfaces/event"
 import styled from "styled-components"
 import { ArrowRightOutlined } from "@ant-design/icons"
 import moment from "moment"

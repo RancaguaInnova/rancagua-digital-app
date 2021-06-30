@@ -1,6 +1,6 @@
 import { IonContent, IonPage } from "@ionic/react"
-import Header from "../../components/Header"
-import Information from "../../components/Information"
+import Header from "components/Header"
+import Information from "components/Information"
 import "./styles.scss"
 
 const InformationPage: React.FC = () => {

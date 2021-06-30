@@ -1,6 +1,6 @@
-import { Event } from "../../interfaces/event"
-import types from "../types"
-import { IEvent } from "../types/event"
+import { Event } from 'interfaces/event'
+import types from '../types'
+import { IEvent } from '../types/event'
 
 interface IEventState {
   event?: Event

@@ -11,11 +11,11 @@ import { home, calendar, cube, information } from "ionicons/icons"
 import { Route, Redirect } from "react-router"
 import styled from "styled-components"
 
-import HomePage from "../../pages/Home"
-import ServicesPage from "../../pages/Services"
-import CalendarPage from "../../pages/Calendar"
-import InformationPage from "../../pages/Information"
-import LoginPage from "../../pages/Login"
+import HomePage from "pages/Home"
+import ServicesPage from "pages/Services"
+import CalendarPage from "pages/Calendar"
+import InformationPage from "pages/Information"
+import LoginPage from "pages/Login"
 
 export const IonTabBarStyled = styled(IonTabBar)`
   background-color: rgba(255, 255, 255, 0.15);

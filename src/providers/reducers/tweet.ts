@@ -1,6 +1,6 @@
-import { Tweet } from "../../interfaces/tweet"
-import types from "../types"
-import { ITweet } from "../types/tweet"
+import { Tweet } from 'interfaces/tweet'
+import types from '../types'
+import { ITweet } from '../types/tweet'
 
 interface ITweetState {
   tweet?: Tweet

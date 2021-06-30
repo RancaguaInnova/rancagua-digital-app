@@ -3,10 +3,10 @@ import { IonContent, IonPage } from "@ionic/react"
 import { Col, Row } from "antd"
 import { useDispatch, useSelector } from "react-redux"
 import "./styles.scss"
-import Header from "../../components/Header"
-import { Tweet } from "../../interfaces/tweet"
-import NewsCard from "../../components/NewsCard"
-import { GetListTweets } from "../../providers/actions/tweet"
+import Header from "components/Header"
+import { Tweet } from "interfaces/tweet"
+import NewsCard from "components/NewsCard"
+import { GetListTweets } from "providers/actions/tweet"
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch()

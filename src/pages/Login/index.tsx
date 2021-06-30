@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { IonContent, IonPage, useIonRouter } from "@ionic/react"
-import Header from "../../components/Header"
+import Header from "components/Header"
 import { Form, Input, Button, Checkbox, Row, Col } from "antd"
 import { UserOutlined, LockOutlined } from "@ant-design/icons"
 

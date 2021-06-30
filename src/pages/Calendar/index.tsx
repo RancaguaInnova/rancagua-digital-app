@@ -3,10 +3,10 @@ import { Calendar, Card, Col, Row } from "antd"
 import moment, { Moment } from "moment"
 import { useState } from "react"
 import locale from "antd/es/date-picker/locale/es_ES"
-import { dateCellRender } from "../../components/Calendar"
-import Header from "../../components/Header"
+import { dateCellRender } from "components/Calendar"
+import Header from "components/Header"
 import "./styles.scss"
-import EventList from "../../components/EventList"
+import EventList from "components/EventList"
 
 const CalendarPage: React.FC = () => {
   const [value, setValue] = useState(moment(Date.now()))
