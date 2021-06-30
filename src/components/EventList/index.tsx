@@ -464,8 +464,8 @@ const EventList: FC<EventListProps> = ({ date }) => {
   return (
     <div>
       Mostrando los eventos del día :{date.format("DD-MM-YYYY")}
-      {eventList.map((item) => {
-        return <EventCard event={item}></EventCard>
+      {eventList.map((item, index) => {
+        return <EventCard key={index} event={item}></EventCard>
       })}
     </div>
   )
