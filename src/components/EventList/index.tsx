@@ -2,6 +2,8 @@ import { Moment } from "moment"
 import React, { FC } from "react"
 import { Event } from "interfaces/event"
 import EventCard from "../EventCard"
+import { Col, Row } from "antd"
+import { DivStyled } from "./styles"
 
 interface EventListProps {
   date: Moment
@@ -462,7 +464,9 @@ const EventList: FC<EventListProps> = ({ date }) => {
   console.log("soy la fecha seleccionada", date.format("DD-MM-YYYY"))
   return (
     <div>
-      Mostrando los eventos del día :{date.format("DD-MM-YYYY")}
+      <DivStyled>
+        Mostrando los eventos del día :{date.format("DD-MM-YYYY")}
+      </DivStyled>
       {eventList.map((item, index) => {
         return <EventCard key={index} event={item}></EventCard>
       })}

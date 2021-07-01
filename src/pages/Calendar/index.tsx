@@ -18,16 +18,17 @@ const CalendarPage: React.FC = () => {
       <Header title="Calendario de Eventos"></Header>
 
       <IonContent fullscreen>
-        <Card>
-          <Calendar
-            dateCellRender={dateCellRender}
-            // monthCellRender={monthCellRender}
-            onSelect={onSelect}
-            locale={locale}
-          />
-        </Card>
-        <Row>
-          <Col xs={24} sm={24} md={12} lg={8} span={8}>
+        <Row justify="center">
+          <Col xs={24} sm={22} md={18} lg={12}>
+            <Card>
+              <Calendar
+                dateCellRender={dateCellRender}
+                // monthCellRender={monthCellRender}
+                onSelect={onSelect}
+                locale={locale}
+              />
+            </Card>
+
             <EventList date={value}></EventList>
           </Col>
         </Row>
