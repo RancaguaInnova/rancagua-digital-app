@@ -1,74 +1,80 @@
-import { Form, Input, Checkbox, Button } from "antd"
+import { Form, Input, Checkbox, Button, Row, Col } from "antd"
 import { UserOutlined, LockOutlined } from "@ant-design/icons"
-import { CustomDivider } from "./styles"
+import { CustomCol, CustomDivider } from "./styles"
 export const LoginForm = () => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values)
   }
   return (
-    <Form
-      name="normal_login"
-      className="login-form"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-    >
-      <Form.Item
-        // name="username"
-        rules={[
-          {
-            required: true,
-            message: "Por favor ingrese su nombre de ususario!",
-          },
-        ]}
+    <div>
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
       >
-        <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Usuario"
-          bordered={false}
-        />
-        <CustomDivider></CustomDivider>
-      </Form.Item>
-
-      <Form.Item
-        // name="password"
-        rules={[
-          {
-            required: true,
-            message: "Por favor ingrese su contraseña!",
-          },
-        ]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="contraseña"
-          bordered={false}
-        />
-        <CustomDivider></CustomDivider>
-      </Form.Item>
-
-      <Form.Item name="remember" valuePropName="checked" noStyle>
-        <Checkbox>Recordar mi contraseña</Checkbox>
-      </Form.Item>
-
-      <Form.Item>
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="login-form-button"
-          shape="round"
+        <Form.Item
+          // name="username"
+          rules={[
+            {
+              required: true,
+              message: "Por favor ingrese su nombre de ususario!",
+            },
+          ]}
         >
-          Ingresar
-        </Button>
-      </Form.Item>
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Usuario"
+            bordered={false}
+          />
+          <CustomDivider></CustomDivider>
+        </Form.Item>
 
-      <Form.Item>
-        <a href="">Registrarse Ahora!</a>
+        <Form.Item
+          // name="password"
+          rules={[
+            {
+              required: true,
+              message: "Por favor ingrese su contraseña!",
+            },
+          ]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="contraseña"
+            bordered={false}
+          />
+          <CustomDivider></CustomDivider>
+        </Form.Item>
 
-        <a className="login-form-forgot" href="">
-          Olvide mi contraseña
-        </a>
-      </Form.Item>
-    </Form>
+        <Form.Item>
+          <Row justify="center">
+            <Col span="8" md="4" lg="4">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                shape="round"
+                block
+              >
+                Ingresar
+              </Button>
+            </Col>
+          </Row>
+        </Form.Item>
+
+        <Form.Item>
+          <Row justify="center">
+            <CustomCol span="12">
+              <a href="">Registrarse Ahora!</a>
+            </CustomCol>
+            <CustomCol span="12">
+              <a href="">Olvide mi contraseña</a>
+            </CustomCol>
+          </Row>
+        </Form.Item>
+      </Form>
+    </div>
   )
 }

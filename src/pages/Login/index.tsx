@@ -3,6 +3,7 @@ import { IonContent, IonPage, useIonRouter } from "@ionic/react"
 import Header from "components/Header"
 import { Card, Col, Layout, Row } from "antd"
 import { LoginForm } from "components/LoginForm"
+import { CustomCard } from "./styles"
 
 interface LoginProps {}
 
@@ -23,13 +24,13 @@ const Login: React.FC<LoginProps> = () => {
 
   return (
     <IonPage>
-      <Header title="Iniciar Session"></Header>
+      <Header title="Iniciar sesión de Rancagua Digital"></Header>
       <IonContent>
         <Row justify="center">
           <Col md={12} xs={20}>
-            <Card>
+            <CustomCard>
               <LoginForm></LoginForm>
-            </Card>
+            </CustomCard>
           </Col>
         </Row>
       </IonContent>
