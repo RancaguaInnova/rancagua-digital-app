@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import { Typography } from "antd"
+import styled from "styled-components"
 const { Title } = Typography
 
 export const TitleStyled = styled(Title)`

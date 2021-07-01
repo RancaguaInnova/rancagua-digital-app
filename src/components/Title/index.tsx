@@ -1,2 +1,2 @@
-import { TitleStyled } from "./styles.ts"
+import { TitleStyled } from "./styles"
 export default TitleStyled
