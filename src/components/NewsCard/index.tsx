@@ -18,6 +18,7 @@ export const CardStyled = styled(Card)`
   margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  height: calc(100% - 20px);
 
   backdrop-filter: blur(5px);
 `

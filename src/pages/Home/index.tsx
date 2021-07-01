@@ -20,12 +20,16 @@ const HomePage: React.FC = () => {
     <IonPage>
       <Header title="Noticias"></Header>
       <IonContent fullscreen>
-        <Row gutter={8}>
-          {listado.map((tweet: any, index: number) => (
-            <Col xs={24} sm={24} md={12} lg={8} span={8} key={index}>
-              <NewsCard data-aos="fade-up" tweet={tweet}></NewsCard>
-            </Col>
-          ))}
+        <Row justify="center">
+          <Col xs={24} sm={24} md={24} lg={18}>
+            <Row justify="center">
+              {listado.map((tweet: any, index: number) => (
+                <Col xs={24} sm={22} md={12} lg={8} key={index}>
+                  <NewsCard data-aos="fade-up" tweet={tweet}></NewsCard>
+                </Col>
+              ))}
+            </Row>
+          </Col>
         </Row>
       </IonContent>
     </IonPage>

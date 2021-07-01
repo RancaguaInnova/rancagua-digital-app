@@ -1,4 +1,4 @@
-import { List, Avatar } from "antd"
+import { List } from "antd"
 
 import styled from "styled-components"
 
