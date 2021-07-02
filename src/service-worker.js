@@ -14,7 +14,7 @@ import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching"
 import { registerRoute } from "workbox-routing"
 import { StaleWhileRevalidate } from "workbox-strategies"
 
-declare const self: ServiceWorkerGlobalScope
+const self = this
 
 clientsClaim()
 
@@ -30,7 +30,7 @@ precacheAndRoute(self.__WB_MANIFEST)
 const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$")
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
-  ({ request, url }: { request: Request; url: URL }) => {
+  ({ request, url }) => {
     // If this isn't a navigation, skip.
     if (request.mode !== "navigate") {
       return false
@@ -95,5 +95,36 @@ self.addEventListener("fetch", (e) => {
     })(),
   )
 })
+
+let deferredPrompt // Allows to show the install prompt
+const installButton = document.getElementById("install_button")
+
+self.addEventListener("beforeinstallprompt", (e) => {
+  console.log("beforeinstallprompt fired")
+  // Prevent Chrome 76 and earlier from automatically showing a prompt
+  e.preventDefault()
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e
+  // Show the install button
+  installButton.hidden = false
+  installButton.addEventListener("click", installApp)
+})
+function installApp() {
+  // Show the prompt
+  deferredPrompt.prompt()
+  installButton.disabled = true
+
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === "accepted") {
+      console.log("PWA setup accepted")
+      installButton.hidden = true
+    } else {
+      console.log("PWA setup rejected")
+    }
+    installButton.disabled = false
+    deferredPrompt = null
+  })
+}
 
 // Any other custom service worker logic can go here.

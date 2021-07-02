@@ -1,6 +1,7 @@
 {
   "short_name": "RancaguaDigital",
-  "name": "Rncagua Digital App",
+  "name": "Rancagua Digital App",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "assets/icon/icon.png",
