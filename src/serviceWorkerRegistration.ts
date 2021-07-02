@@ -10,19 +10,6 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
 
-const divInstall = document.getElementById("installContainer")
-const butInstall = document.getElementById("butInstall")
-
-/* Put code here */
-
-/* Only register a service worker if it's supported */
-
-export function register() {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js")
-  }
-}
-/*
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
     // [::1] is the IPv6 localhost address.
@@ -145,7 +132,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
       )
     })
 }
-*/
+
 export function unregister() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.ready
