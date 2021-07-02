@@ -1,9 +1,9 @@
 {
-  "short_name": "Ionic App",
-  "name": "My Ionic App",
+  "short_name": "Rncagua Digital App",
+  "name": "Rncagua Digital App",
   "icons": [
     {
-      "src": "assets/icon/favicon.png",
+      "src": "assets/icon/icon.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
@@ -16,6 +16,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#ffffff",
+  "theme_color": "#ed1849",
   "background_color": "#ffffff"
 }
