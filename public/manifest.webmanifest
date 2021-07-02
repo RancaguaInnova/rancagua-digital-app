@@ -1,5 +1,5 @@
 {
-  "short_name": "Rncagua Digital App",
+  "short_name": "RancaguaDigital",
   "name": "Rncagua Digital App",
   "icons": [
     {
@@ -14,7 +14,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "index.html",
   "display": "standalone",
   "theme_color": "#ed1849",
   "background_color": "#ffffff"
