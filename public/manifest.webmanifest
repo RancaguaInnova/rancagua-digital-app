@@ -1,7 +1,7 @@
 {
   "short_name": "RancaguaDigital",
   "name": "Rancagua Digital App",
-  "prefer_related_applications": false,
+  "prefer_related_applications": true,
   "icons": [
     {
       "src": "assets/icon/icon.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": ".",
   "display": "fullscreen",
   "theme_color": "#ed1849",
   "background_color": "#ffffff"
