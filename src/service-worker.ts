@@ -34,7 +34,7 @@ manifest.push(urlPrecache)*/
 
 precacheAndRoute(manifest)
 
-const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$")
+/* const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$")
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }: { request: Request; url: URL }) => {
@@ -59,12 +59,15 @@ registerRoute(
   },
   createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html"),
 )
-
+ */
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
   ({ url }) =>
     url.origin === self.location.origin &&
-    (url.pathname.endsWith(".png") || url.pathname.endsWith(".ico")),
+    (url.pathname.endsWith(".png") ||
+      url.pathname.endsWith(".ico") ||
+      url.pathname.endsWith(".jpg") ||
+      url.pathname.endsWith(".jpeg")),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: "images",
@@ -76,10 +79,54 @@ registerRoute(
   }),
 )
 registerRoute(
+  ({ url }) => url.origin === "https://pbs.twimg.com",
+  new StaleWhileRevalidate({
+    cacheName: "twitter-cache",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  }),
+)
+registerRoute(
+  ({ url }) => url.origin === "https://services.smartrancagua.com",
+  new StaleWhileRevalidate({
+    cacheName: "smart-rancagua-cache",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  }),
+)
+registerRoute(
+  ({ url }) => url.origin === "https://webviews.smartrancagua.com/",
+  new StaleWhileRevalidate({
+    cacheName: "webviews-smart-rancagua-cache",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  }),
+)
+registerRoute(
+  ({ url }) => url.origin === "https://api.smartrancagua.com",
+  new StaleWhileRevalidate({
+    cacheName: "api-smart-rancagua-cache",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  }),
+)
+/* registerRoute(
   // Add in any other file extensions or routing criteria as needed.
   ({ url }) =>
-    url.pathname.endsWith("/tweets") ||
     url.pathname.endsWith("/applications") ||
+    url.pathname.endsWith("/tweets") ||
     url.pathname.endsWith("/events"),
   new NetworkFirst({
     cacheName: "smart-rancagua-cache",
@@ -89,9 +136,9 @@ registerRoute(
       new ExpirationPlugin({ maxEntries: 50 }),
     ],
   }),
-)
+) */
 
-self.addEventListener("message", (event) => {
+https: self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting()
   }
