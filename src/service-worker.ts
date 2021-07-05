@@ -19,20 +19,7 @@ declare const self: ServiceWorkerGlobalScope
 
 clientsClaim()
 
-let manifest = self.__WB_MANIFEST
-
-/* let urlPrecache = {
-  url: "https://services.smartrancagua.com/rancagua/applications",
-  revision: "1",
-}
-manifest.push(urlPrecache)
-urlPrecache = {
-  url: "https://services.smartrancagua.com/rancagua/tweets",
-  revision: "2",
-} 
-manifest.push(urlPrecache)*/
-
-precacheAndRoute(manifest)
+precacheAndRoute(self.__WB_MANIFEST)
 
 const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$")
 registerRoute(
