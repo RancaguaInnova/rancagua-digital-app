@@ -34,7 +34,7 @@ manifest.push(urlPrecache)*/
 
 precacheAndRoute(manifest)
 
-/* const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$")
+const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$")
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }: { request: Request; url: URL }) => {
@@ -59,7 +59,7 @@ registerRoute(
   },
   createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html"),
 )
- */
+
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
   ({ url }) =>
