@@ -11,7 +11,7 @@ export const GetListEvents = () => {
   return async (dispach: Dispatch) => {
     try {
       let events: Event[] = []
-      const { data, status } = await axios.get(`/rancagua/tweets`)
+      const { data, status } = await axios.get(`/rancagua/events`)
       if (status === 200) {
         events = data.data
         dispach(eventList(events))
