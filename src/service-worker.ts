@@ -65,12 +65,13 @@ registerRoute(
   }),
 )
 registerRoute(
-  ({ url }) => url.origin === "https://webviews.smartrancagua.com/",
+  ({ url }) => url.origin === "https://webviews.smartrancagua.com",
   new StaleWhileRevalidate({
     cacheName: "webviews-smart-rancagua-cache",
     plugins: [new ExpirationPlugin({ maxEntries: 50 })],
   }),
 )
+
 registerRoute(
   ({ url }) => url.origin === "https://api.smartrancagua.com",
   new StaleWhileRevalidate({

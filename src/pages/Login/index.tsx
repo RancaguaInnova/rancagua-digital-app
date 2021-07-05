@@ -22,6 +22,15 @@ const Login: React.FC<LoginProps> = () => {
     // login()
   }
 
+  let swReg: any
+  useEffect(() => {
+    navigator.serviceWorker.getRegistration().then((registration) => {
+      if (registration) {
+        registration!.pushManager.getSubscription().then(console.log)
+      }
+    })
+  }, [])
+
   return (
     <IonPage>
       <Header title="Iniciar sesión de Rancagua Digital"></Header>
