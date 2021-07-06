@@ -1,6 +1,6 @@
 {
-    "theme_color": "#d0021b",
-    "background_color": "#f69435",
+    "theme_color": "#ed1849",
+    "background_color": "#ed1849",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
@@ -27,6 +27,14 @@
             "src": "assets/icon/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+            
+        },
+               {
+            "src": "assets/icon/icon-maskable-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+            
         }
     ]
 }
