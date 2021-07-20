@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { IonContent, IonPage, useIonRouter } from "@ionic/react"
 import Header from "components/Header"
-import { Card, Col, Layout, Row } from "antd"
+import { Button, Card, Col, Layout, Row } from "antd"
 import { LoginForm } from "components/LoginForm"
 import { CustomCard } from "./styles"
+import { getPublicKey } from "providers/api/notification"
 
 interface LoginProps {}
 
@@ -18,18 +19,62 @@ const Login: React.FC<LoginProps> = () => {
     }
   }, [isAuthenticated, router])
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // login()
+    if (!swReg) return console.log("No hay registro de SW")
+    const key = getPublicKey()
+    swReg.pushManager
+      .subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: key,
+      })
+      .then((res: any) => res.toJSON())
+      .then((suscripcion: any) => {
+        // console.log(suscripcion);
+        fetch("api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(suscripcion),
+        })
+          .then()
+          .catch()
+      })
+  }
+  function notificarme() {
+    if (!window.Notification) {
+      console.log("Este navegador no soporta notificaciones")
+      return
+    }
+
+    if (Notification.permission === "granted") {
+      //enviarNotificacion()
+    } else if (Notification.permission === "default") {
+      Notification.requestPermission(function (permission) {
+        console.log(permission)
+
+        if (permission === "granted") {
+          new Notification(
+            "Gracias por subscribirte a las notificaciones  de Rancagua Digital",
+          )
+          //  enviarNotificacion()
+        }
+      })
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission(function (permission) {
+        console.log(permission)
+
+        if (permission === "granted") {
+          new Notification(
+            "Gracias por subscribirte a las notificaciones  de Rancagua Digital",
+          )
+          //  enviarNotificacion()
+        }
+      })
+    }
   }
 
   let swReg: any
-  useEffect(() => {
-    navigator.serviceWorker.getRegistration().then((registration) => {
-      if (registration) {
-        registration!.pushManager.getSubscription().then(console.log)
-      }
-    })
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <IonPage>
@@ -39,6 +84,7 @@ const Login: React.FC<LoginProps> = () => {
           <Col md={12} xs={20}>
             <CustomCard>
               <LoginForm></LoginForm>
+              <Button onClick={handleLogin}> Subcription</Button>
             </CustomCard>
           </Col>
         </Row>
