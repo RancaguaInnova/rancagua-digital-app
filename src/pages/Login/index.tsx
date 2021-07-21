@@ -11,6 +11,7 @@ interface LoginProps {}
 const Login: React.FC<LoginProps> = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [error, setError] = useState(false)
+  let swReg: ServiceWorkerRegistration | undefined
 
   const router = useIonRouter()
   useEffect(() => {
@@ -19,26 +20,35 @@ const Login: React.FC<LoginProps> = () => {
     }
   }, [isAuthenticated, router])
 
-  const handleLogin = async () => {
-    // login()
-    if (!swReg) return console.log("No hay registro de SW")
-    const key = getPublicKey()
-    swReg.pushManager
-      .subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: key,
+  const handleSubcription = async () => {
+    if (navigator.serviceWorker) {
+      console.log(navigator.serviceWorker)
+      navigator.serviceWorker.getRegistration().then(async (registration) => {
+        console.log("r", registration)
+        swReg = registration
+
+        // login()
+        if (!swReg) return console.log("No hay registro de SW", swReg)
+        const key = await getPublicKey()
+        console.log("key", key)
+        swReg.pushManager
+          .subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: key,
+          })
+          .then((res: any) => res.toJSON())
+          .then((suscripcion: any) => {
+            // console.log(suscripcion);
+            fetch("api/subscribe", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(suscripcion),
+            })
+              .then()
+              .catch()
+          })
       })
-      .then((res: any) => res.toJSON())
-      .then((suscripcion: any) => {
-        // console.log(suscripcion);
-        fetch("api/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(suscripcion),
-        })
-          .then()
-          .catch()
-      })
+    }
   }
   function notificarme() {
     if (!window.Notification) {
@@ -73,7 +83,6 @@ const Login: React.FC<LoginProps> = () => {
     }
   }
 
-  let swReg: any
   useEffect(() => {}, [])
 
   return (
@@ -84,7 +93,7 @@ const Login: React.FC<LoginProps> = () => {
           <Col md={12} xs={20}>
             <CustomCard>
               <LoginForm></LoginForm>
-              <Button onClick={handleLogin}> Subcription</Button>
+              <Button onClick={handleSubcription}> Subcription</Button>
             </CustomCard>
           </Col>
         </Row>
