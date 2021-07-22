@@ -5,6 +5,7 @@ import { Button, Card, Col, Layout, Row } from "antd"
 import { LoginForm } from "components/LoginForm"
 import { CustomCard } from "./styles"
 import { getPublicKey } from "providers/api/notification"
+import convertVapidKey from "convert-vapid-public-key"
 
 interface LoginProps {}
 
@@ -22,14 +23,11 @@ const Login: React.FC<LoginProps> = () => {
 
   const handleSubcription = async () => {
     if (navigator.serviceWorker) {
-      console.log(navigator.serviceWorker)
       navigator.serviceWorker.getRegistration().then(async (registration) => {
-        console.log("r", registration)
         swReg = registration
-
-        // login()
         if (!swReg) return console.log("No hay registro de SW", swReg)
-        const key = await getPublicKey()
+        let k = await getPublicKey()
+        const key = convertVapidKey(k)
         console.log("key", key)
         swReg.pushManager
           .subscribe({
@@ -38,7 +36,7 @@ const Login: React.FC<LoginProps> = () => {
           })
           .then((res: any) => res.toJSON())
           .then((suscripcion: any) => {
-            // console.log(suscripcion);
+            console.log("suscripcion", suscripcion)
             fetch("api/subscribe", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
