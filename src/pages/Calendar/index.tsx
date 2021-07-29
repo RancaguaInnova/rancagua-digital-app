@@ -1,12 +1,12 @@
-import { IonContent, IonPage } from "@ionic/react"
-import { Calendar, Card, Col, Row } from "antd"
-import moment, { Moment } from "moment"
-import { useState } from "react"
-import locale from "antd/es/date-picker/locale/es_ES"
-import { dateCellRender } from "components/Calendar"
-import Header from "components/Header"
-import "./styles.scss"
-import EventList from "components/EventList"
+import { IonContent, IonPage } from '@ionic/react'
+import { Calendar, Card, Col, Row } from 'antd'
+import moment, { Moment } from 'moment'
+import { useState } from 'react'
+import locale from 'antd/es/date-picker/locale/es_ES'
+import { dateCellRender } from 'components/Calendar'
+import Header from 'components/Header'
+import './styles.scss'
+import EventList from 'components/EventList'
 
 const CalendarPage: React.FC = () => {
   const [value, setValue] = useState(moment(Date.now()))
@@ -15,21 +15,19 @@ const CalendarPage: React.FC = () => {
   }
   return (
     <IonPage>
-      <Header title="Calendario de Eventos"></Header>
+      <Header title="Calendario de Eventos" />
 
       <IonContent fullscreen>
         <Row justify="center">
           <Col xs={24} sm={22} md={18} lg={12}>
-            <Card>
-              <Calendar
-                dateCellRender={dateCellRender}
-                // monthCellRender={monthCellRender}
-                onSelect={onSelect}
-                locale={locale}
-              />
-            </Card>
+            <Calendar
+              dateCellRender={dateCellRender}
+              // monthCellRender={monthCellRender}
+              onSelect={onSelect}
+              locale={locale}
+            />
 
-            <EventList date={value}></EventList>
+            <EventList date={value} />
           </Col>
         </Row>
       </IonContent>
