@@ -14,3 +14,17 @@ export const getPublicKey = async () => {
     return null
   }
 }
+export const addSubcription = async (subcription:any) => {
+  try {
+    let { data, status } = await axios.post("/rancagua/notifications/subscribe",subcription)
+    console.log("data",data)
+    console.log("status",status)
+    if (status === 200) {
+      return data
+    }
+    return ""
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}

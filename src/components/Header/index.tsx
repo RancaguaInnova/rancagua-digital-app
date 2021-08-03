@@ -44,12 +44,16 @@ const Header: FC<HeaderProps> = ({ title }) => {
               <IonButton routerLink={"/tabs/information"}>
                 Información
               </IonButton>
+              <IonButton routerLink={"/tabs/subcription"}>
+                Subcripción
+              </IonButton>
+
               <IonButton routerLink={"/tabs/login"}>Login</IonButton>
             </>
           )}{" "}
         </IonButtons>
         <IonTitle>
-          <img src="assets/icon/logo.png" height="35"></img>
+          <img src="assets/icon/logo.png" height="35" alt="Logo"></img>
         </IonTitle>
       </IonToolbar>{" "}
       <TitleStyled level={3}>{title}</TitleStyled>

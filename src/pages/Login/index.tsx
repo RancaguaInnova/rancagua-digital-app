@@ -11,8 +11,6 @@ interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [error, setError] = useState(false)
-  let swReg: ServiceWorkerRegistration | undefined
 
   const router = useIonRouter()
   useEffect(() => {
@@ -20,66 +18,6 @@ const Login: React.FC<LoginProps> = () => {
       router.push("/tabs/tab1", "none", "replace")
     }
   }, [isAuthenticated, router])
-
-  const handleSubcription = async () => {
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.getRegistration().then(async (registration) => {
-        swReg = registration
-        if (!swReg) return console.log("No hay registro de SW", swReg)
-        let k = await getPublicKey()
-        const key = convertVapidKey(k)
-        console.log("key", key)
-        swReg.pushManager
-          .subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: key,
-          })
-          .then((res: any) => res.toJSON())
-          .then((suscripcion: any) => {
-            console.log("suscripcion", suscripcion)
-            fetch("api/subscribe", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(suscripcion),
-            })
-              .then()
-              .catch()
-          })
-      })
-    }
-  }
-  function notificarme() {
-    if (!window.Notification) {
-      console.log("Este navegador no soporta notificaciones")
-      return
-    }
-
-    if (Notification.permission === "granted") {
-      //enviarNotificacion()
-    } else if (Notification.permission === "default") {
-      Notification.requestPermission(function (permission) {
-        console.log(permission)
-
-        if (permission === "granted") {
-          new Notification(
-            "Gracias por subscribirte a las notificaciones  de Rancagua Digital",
-          )
-          //  enviarNotificacion()
-        }
-      })
-    } else if (Notification.permission !== "denied") {
-      Notification.requestPermission(function (permission) {
-        console.log(permission)
-
-        if (permission === "granted") {
-          new Notification(
-            "Gracias por subscribirte a las notificaciones  de Rancagua Digital",
-          )
-          //  enviarNotificacion()
-        }
-      })
-    }
-  }
 
   useEffect(() => {}, [])
 
@@ -91,7 +29,6 @@ const Login: React.FC<LoginProps> = () => {
           <Col md={12} xs={20}>
             <CustomCard>
               <LoginForm></LoginForm>
-              <Button onClick={handleSubcription}> Subcription</Button>
             </CustomCard>
           </Col>
         </Row>

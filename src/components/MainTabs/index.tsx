@@ -16,6 +16,7 @@ import ServicesPage from "pages/Services"
 import CalendarPage from "pages/Calendar"
 import InformationPage from "pages/Information"
 import LoginPage from "pages/Login"
+import SubcriptionPage from "pages/Subcription"
 
 export const IonTabBarStyled = styled(IonTabBar)`
   background-color: rgba(255, 255, 255, 0.15);
@@ -51,6 +52,11 @@ const MainTabs: FC = ({}) => {
           render={() => <InformationPage />}
         />
         <Route path="/tabs/:tab(login)" render={() => <LoginPage />} />
+        <Route
+          path="/tabs/:tab(subcription)"
+          render={() => <SubcriptionPage />}
+        />
+
         <Route
           render={() => {
             return <Redirect to="/tabs" />
