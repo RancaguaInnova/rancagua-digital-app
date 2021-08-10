@@ -10,7 +10,7 @@ export const GetListTweets = () => {
   return async (dispach: Dispatch) => {
     try {
       let tweets: Tweet[] = []
-      const { data, status } = await axios.get(`/rancagua/tweets`)
+      const { data, status } = await axios.get(`/city/tweets`)
       if (status === 200) {
         tweets = data.data
         dispach(tweetList(tweets))

@@ -4,7 +4,7 @@ axios.defaults.baseURL = url
 
 export const getPublicKey = async () => {
   try {
-    let { data, status } = await axios.get("/rancagua/notifications/getKey")
+    let { data, status } = await axios.get("/city/notifications/getKey")
     if (status === 200) {
       return data
     }
@@ -16,7 +16,7 @@ export const getPublicKey = async () => {
 }
 export const addSubcription = async (subcription:any) => {
   try {
-    let { data, status } = await axios.post("/rancagua/notifications/subscribe",subcription)
+    let { data, status } = await axios.post("/city/notifications/subscribe",subcription)
     console.log("data",data)
     console.log("status",status)
     if (status === 200) {

@@ -12,7 +12,7 @@ export const GetListApplications = () => {
 
     try {
       let applications: Application[] = []
-      const { data, status } = await axios.get(`/rancagua/applications`)
+      const { data, status } = await axios.get(`/city/applications`)
       if (status === 200) {
         applications = data.rows
         dispach(applicationList(applications))
