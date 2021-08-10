@@ -17,8 +17,7 @@ export const getPublicKey = async () => {
 export const addSubcription = async (subcription:any) => {
   try {
     let { data, status } = await axios.post("/city/notifications/subscribe",subcription)
-    console.log("data",data)
-    console.log("status",status)
+
     if (status === 200) {
       return data
     }
