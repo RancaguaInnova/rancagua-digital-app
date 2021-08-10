@@ -3,7 +3,7 @@ import styled from "styled-components"
 const { Title } = Typography
 
 export const TitleStyled = styled(Title)`
-  background: darkslategrey;
+  background: #fbaf44;
   color: white !important;
   padding-left: 20px;
   line-height: 34px !important;
