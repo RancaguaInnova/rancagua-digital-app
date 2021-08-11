@@ -13,7 +13,7 @@ import { getPublicKey, addSubcription } from "providers/api/notification";
 import convertVapidKey from "convert-vapid-public-key";
 import { ToggleChangeEventDetail } from "@ionic/core";
 
-interface LoginProps {}
+interface LoginProps { }
 
 const Login: React.FC<LoginProps> = () => {
   let swReg: ServiceWorkerRegistration | undefined;
@@ -44,7 +44,7 @@ const Login: React.FC<LoginProps> = () => {
               try {
                 let respuesta = await addSubcription(suscripcion);
                 console.log(respuesta);
-              } catch (error) {}
+              } catch (error) { }
             });
         });
       }
@@ -54,7 +54,7 @@ const Login: React.FC<LoginProps> = () => {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   return (
     <IonPage>
@@ -63,7 +63,7 @@ const Login: React.FC<LoginProps> = () => {
         <Row justify="center">
           <Col md={12} xs={20}>
             <CustomCard>
-              <h3>Activacion de notificaciones</h3>
+              <h4>Activacion de notificaciones</h4>
               <IonItem>
                 <IonLabel>Recibir Notificaciones</IonLabel>
                 <IonToggle

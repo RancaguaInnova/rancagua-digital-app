@@ -6,6 +6,7 @@ import styled from "styled-components"
 import moment from "moment"
 import "./styles.scss"
 import { Browser } from '@capacitor/browser';
+import openCapacitorSite from "components/openCapacitorBrowser"
 
 const idLocale = require("moment/locale/es")
 moment.updateLocale("es", idLocale)
@@ -29,12 +30,9 @@ interface NewsCardProps {
 }
 const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
   const { Meta } = Card
-  console.log("tweet",tweet)
+  console.log("tweet", tweet)
 
-  const openCapacitorSite = async (url:string) => {
-    console.log("open with capacitor")
-    await Browser.open({ url: url });
-  };
+
   return (
     <>
       <CardStyled
@@ -60,7 +58,7 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
         <Linkify
           componentDecorator={(decoratedHref, decoratedText, key) => (
             // eslint-disable-next-line jsx-a11y/anchor-is-valid
-            <a  onClick={() =>openCapacitorSite(decoratedHref)} href="#" key={key}>
+            <a onClick={() => openCapacitorSite(decoratedHref)} href="#" key={key}>
               {decoratedText}
             </a>
           )}
