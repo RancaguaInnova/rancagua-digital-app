@@ -66,7 +66,7 @@ const Header: FC<HeaderProps> = ({ title, back = false }) => {
             <IoIosArrowBack></IoIosArrowBack>
           </span>
         )}
-        <span> {title}</span>
+        {title}
       </TitleStyled>
     </IonHeader>
   )
