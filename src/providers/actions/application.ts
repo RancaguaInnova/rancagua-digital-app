@@ -9,13 +9,11 @@ axios.defaults.baseURL = url
 export const GetListApplications = () => {
   return async (dispach: Dispatch) => {
     console.log("get GetListApplications")
-
     try {
       let applications: Application[] = []
       const { data, status } = await axios.get(`/city/applications`)
       if (status === 200) {
         applications = data.rows
-
         dispach(
           applicationList(
             applications.filter((app) => app.approved && !app.isPrivate),

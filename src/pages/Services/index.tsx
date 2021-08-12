@@ -13,10 +13,13 @@ const ServicesPage: React.FC = () => {
   const dispatch = useDispatch()
 
   const { applications } = useSelector((state: any) => state.application)
-  const listado: Application[] = applications || []
+  const listado: Application[] = applications
+    ? applications
+    : dispatch(GetListApplications())
 
   useEffect(() => {
     dispatch(GetListApplications())
+    console.log("me vuelvo a ejecutar")
     return () => {}
   }, [dispatch])
   return (
@@ -25,17 +28,18 @@ const ServicesPage: React.FC = () => {
 
       <IonContent fullscreen>
         <Row>
-          {listado.map((application, index) => {
-            return (
-              <Col xs={24} sm={24} md={12} lg={8} span={8} key={index}>
-                <ServiceItem application={application}></ServiceItem>
-              </Col>
-            )
-          })}
+          {listado &&
+            listado.length > 0 &&
+            listado.map((application, index) => {
+              return (
+                <Col xs={24} sm={24} md={12} lg={8} span={8} key={index}>
+                  <ServiceItem application={application}></ServiceItem>
+                </Col>
+              )
+            })}
         </Row>
       </IonContent>
     </IonPage>
   )
 }
-
 export default ServicesPage

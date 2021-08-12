@@ -9,12 +9,16 @@ import {
 import React, { FC, useEffect } from "react"
 import TitleStyled from "../Title"
 import "./styles.scss"
-
+import { useHistory } from "react-router-dom"
+import { IoIosArrowBack } from "react-icons/io"
 interface HeaderProps {
   title: string
+  back?: boolean
 }
 
-const Header: FC<HeaderProps> = ({ title }) => {
+const Header: FC<HeaderProps> = ({ title, back = false }) => {
+  const history = useHistory()
+
   const [mQuery, setMQuery] = React.useState<any>({
     matches: window.innerWidth > 768 ? true : false,
   })
@@ -56,7 +60,14 @@ const Header: FC<HeaderProps> = ({ title }) => {
           <img src="assets/icon/logo.png" height="35" alt="Logo"></img>
         </IonTitle>
       </IonToolbar>{" "}
-      <TitleStyled level={3}>{title}</TitleStyled>
+      <TitleStyled level={3}>
+        {back && (
+          <span className="back" onClick={() => history.goBack()}>
+            <IoIosArrowBack></IoIosArrowBack>
+          </span>
+        )}
+        <span> {title}</span>
+      </TitleStyled>
     </IonHeader>
   )
 }

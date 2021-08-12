@@ -1,6 +1,5 @@
-import { Application } from 'interfaces/applications'
-import types from '../types'
-import { IApplication } from '../types/application'
+import types from "../types"
+import { IApplication } from "../types/application"
 
 const initialState = {
   applications: [],
@@ -8,12 +7,12 @@ const initialState = {
 
 export const applicationReducer = (
   state = initialState,
-  action: IApplication
+  action: IApplication,
 ) => {
   switch (action.type) {
     case types.GET_LIST_APPLICATION:
       return {
-        applications: action.payload.listApplication || [],
+        applications: action.payload.listApplication,
       }
 
     default:

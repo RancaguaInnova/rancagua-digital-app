@@ -13,4 +13,5 @@ export const TitleStyled = styled(Title)`
   vertical-align: middle;
   height: 34px;
   margin-bottom: 0px !important;
+  text-align: center;
 `

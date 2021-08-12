@@ -23,6 +23,7 @@ export interface Application {
   appStoreId?: number
   appStoreLocale?: string
   playStoreId?: string
+  internalApp?: boolean
   _id?: string
 }
 

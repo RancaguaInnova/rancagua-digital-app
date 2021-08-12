@@ -17,6 +17,7 @@ import CalendarPage from "pages/Calendar"
 import InformationPage from "pages/Information"
 import LoginPage from "pages/Login"
 import SubcriptionPage from "pages/Subcription"
+import AppViewPage from "pages/AppView"
 
 export const IonTabBarStyled = styled(IonTabBar)`
   background-color: rgba(255, 255, 255, 0.15);
@@ -56,6 +57,7 @@ const MainTabs: FC = ({}) => {
           path="/tabs/:tab(subcription)"
           render={() => <SubcriptionPage />}
         />
+        <Route path="/tabs/:tab(appView)" render={() => <AppViewPage />} />
 
         <Route
           render={() => {
