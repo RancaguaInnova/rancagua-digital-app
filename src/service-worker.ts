@@ -90,3 +90,26 @@ self.addEventListener("install", function (event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting()
 })
+
+// Escuchar PUSH
+self.addEventListener("push", (e) => {
+  console.log("escuhando notificacion", e)
+
+  e.waitUntil(self.registration.showNotification("llego una notificacion"))
+})
+
+// Cierra la notificacion
+self.addEventListener("notificationclose", (e) => {
+  console.log("Notificación cerrada", e)
+})
+
+self.addEventListener("notificationclick", (e) => {
+  const notificacion = e.notification
+  const accion = e.action
+
+  console.log({ notificacion, accion })
+  console.log(notificacion)
+  console.log(accion)
+
+  // e.waitUntil(respuesta)
+})
