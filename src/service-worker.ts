@@ -94,8 +94,11 @@ self.addEventListener("install", function (event) {
 self.addEventListener("push", function (event) {
   const title = "Rancagua Digital"
   const { data } = event
+  console.log("ha llegado una notificacion", data)
 
   const text = data ? data.text() : ""
+
+  console.log("el texto de la notificacion", text)
   const options = { body: text }
   event.waitUntil(self.registration.showNotification(title, options))
 })
