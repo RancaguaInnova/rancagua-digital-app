@@ -7,7 +7,7 @@
 // code you'd like.
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
-
+"use strict"
 import { clientsClaim } from "workbox-core"
 import { ExpirationPlugin } from "workbox-expiration"
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching"
@@ -91,11 +91,13 @@ self.addEventListener("install", function (event) {
   self.skipWaiting()
 })
 
-// Escuchar PUSH
-self.addEventListener("push", (e) => {
-  console.log("escuhando notificacion", e)
+self.addEventListener("push", function (event) {
+  const title = "Rancagua Digital"
+  const { data } = event
 
-  e.waitUntil(self.registration.showNotification("llego una notificacion"))
+  const text = data ? data.text() : ""
+  const options = { body: text }
+  event.waitUntil(self.registration.showNotification(title, options))
 })
 
 // Cierra la notificacion
