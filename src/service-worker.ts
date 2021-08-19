@@ -99,7 +99,23 @@ self.addEventListener("push", function (event) {
   const text = data ? data.text() : ""
 
   console.log("el texto de la notificacion", text)
-  const options = { body: text }
+
+  const options = {
+    body: text,
+    icon: `assets/icon/icon-192x192.png`,
+    badge: "assets/icon/favicon.ico",
+    image: "assets/Rancagua-Blanco.png",
+    vibrate: [
+      125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600,
+    ],
+    openUrl: "/",
+    data: {
+      // url: 'https://google.com',
+      url: "/",
+      id: "id",
+    },
+  }
+
   event.waitUntil(self.registration.showNotification(title, options))
 })
 
