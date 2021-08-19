@@ -124,13 +124,30 @@ self.addEventListener("notificationclose", (e) => {
   console.log("Notificación cerrada", e)
 })
 
-self.addEventListener("notificationclick", (e) => {
+/* self.addEventListener("notificationclick", (e) => {
   const notificacion = e.notification
   const accion = e.action
 
   console.log({ notificacion, accion })
   console.log(notificacion)
   console.log(accion)
+  return notificacion.close()
 
   // e.waitUntil(respuesta)
+}) */
+
+self.addEventListener("notificationclick", (e) => {
+  const notificacion = e.notification
+  const accion = e.action
+
+  console.log({ notificacion, accion })
+  // console.log(notificacion);
+  // console.log(accion);
+
+  self.clients.openWindow(notificacion.data.url).then(function (windowClient) {
+    // Do something with your WindowClient
+  })
+  return notificacion.close()
+
+  //e.waitUntil(respuesta)
 })
