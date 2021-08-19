@@ -109,6 +109,11 @@ self.addEventListener("push", function (event) {
       125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600,
     ],
     openUrl: "https://rancagua-digital-app.web.app/tabs/home",
+    data: {
+      // url: 'https://google.com',
+      url: "https://rancagua-digital-app.web.app/tabs/home",
+      id: "id",
+    },
   }
 
   event.waitUntil(self.registration.showNotification(title, options))
