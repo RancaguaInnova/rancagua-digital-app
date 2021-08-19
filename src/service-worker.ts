@@ -104,16 +104,11 @@ self.addEventListener("push", function (event) {
     body: text,
     icon: `assets/icon/icon-192x192.png`,
     badge: "assets/icon/favicon.ico",
-    image: "assets/Rancagua-Blanco.png",
+    image: "https://pbs.twimg.com/media/E9GuXXwWEAEvhL4.jpg",
     vibrate: [
       125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600,
     ],
-    openUrl: "/",
-    data: {
-      // url: 'https://google.com',
-      url: "/",
-      id: "id",
-    },
+    openUrl: "https://rancagua-digital-app.web.app/tabs/home",
   }
 
   event.waitUntil(self.registration.showNotification(title, options))
