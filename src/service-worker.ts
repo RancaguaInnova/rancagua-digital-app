@@ -96,22 +96,21 @@ self.addEventListener("push", function (event) {
   const { data } = event
   console.log("ha llegado una notificacion", data)
 
-  const text = data ? data.text() : ""
+  const json = data ? data.json() : ""
 
-  console.log("el texto de la notificacion", text)
-
+  const { message, image, link } = json
   const options = {
-    body: text,
+    body: message,
     icon: `assets/icon/icon-192x192.png`,
     badge: "assets/icon/favicon.ico",
-    image: "https://pbs.twimg.com/media/E9GuXXwWEAEvhL4.jpg",
+    image: image.src,
     vibrate: [
       125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600,
     ],
-    openUrl: "https://rancagua-digital-app.web.app/tabs/home",
+    openUrl: link,
     data: {
       // url: 'https://google.com',
-      url: "https://rancagua-digital-app.web.app/tabs/home",
+      url: link || "https://rancagua-digital-app.web.app/tabs/home",
       id: "id",
     },
   }
