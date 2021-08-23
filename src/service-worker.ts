@@ -14,6 +14,7 @@ import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching"
 import { registerRoute } from "workbox-routing"
 import { StaleWhileRevalidate, CacheFirst } from "workbox-strategies"
 import { NetworkFirst } from "workbox-strategies"
+import { BackgroundSyncPlugin } from "workbox-background-sync"
 
 declare const self: ServiceWorkerGlobalScope
 
@@ -37,6 +38,10 @@ registerRoute(({ request, url }: { request: Request; url: URL }) => {
   // Return true to signal that we want to use the handler.
   return true
 }, createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html"))
+const QUEUE_NAME = "bgSyncQueue"
+const bgSyncPlugin = new BackgroundSyncPlugin(QUEUE_NAME, {
+  maxRetentionTime: 24 * 60, // Retry for max of 24 Hours (specified in minutes)
+})
 
 registerRoute(
   ({ url }) =>
@@ -47,28 +52,28 @@ registerRoute(
       url.pathname.endsWith(".jpeg")),
   new StaleWhileRevalidate({
     cacheName: "images",
-    plugins: [new ExpirationPlugin({ maxEntries: 50 })],
+    plugins: [bgSyncPlugin],
   }),
 )
 registerRoute(
   ({ url }) => url.origin === "https://pbs.twimg.com",
   new StaleWhileRevalidate({
     cacheName: "twitter-cache",
-    plugins: [new ExpirationPlugin({ maxEntries: 50 })],
+    plugins: [bgSyncPlugin],
   }),
 )
 registerRoute(
   ({ url }) => url.origin === "https://services.smartrancagua.com",
   new StaleWhileRevalidate({
     cacheName: "smart-rancagua-cache",
-    plugins: [new ExpirationPlugin({ maxEntries: 50 })],
+    plugins: [bgSyncPlugin],
   }),
 )
 registerRoute(
   ({ url }) => url.origin === "https://webviews.smartrancagua.com",
   new StaleWhileRevalidate({
     cacheName: "webviews-smart-rancagua-cache",
-    plugins: [new ExpirationPlugin({ maxEntries: 50 })],
+    plugins: [bgSyncPlugin],
   }),
 )
 
@@ -76,7 +81,17 @@ registerRoute(
   ({ url }) => url.origin === "https://api.smartrancagua.com",
   new StaleWhileRevalidate({
     cacheName: "api-smart-rancagua-cache",
-    plugins: [new ExpirationPlugin({ maxEntries: 50 })],
+    plugins: [bgSyncPlugin],
+  }),
+)
+
+const CACHE = "rancagua-digital-offline"
+
+registerRoute(
+  new RegExp("/*"),
+  new StaleWhileRevalidate({
+    cacheName: CACHE,
+    plugins: [bgSyncPlugin],
   }),
 )
 
