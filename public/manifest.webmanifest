@@ -36,5 +36,22 @@
       "type": "image/png",
       "purpose": "maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Inicio",
+      "url": "/tabs/home",
+      "description": "Noticias y tweets de Rancagua digital"
+    },
+    {
+      "name": "Calendario de Eventos",
+      "url": "/tabs/calendar",
+      "description": "Calendario de eventos de Rancagua digital"
+    },
+    {
+      "name": "Servicios",
+      "url": "/tabs/calendar",
+      "description": "Servicios disponibles en Rancagua digital"
+    }
   ]
 }
