@@ -12,8 +12,15 @@ const HomePage: React.FC = () => {
   const dispatch = useDispatch()
   const { tweets } = useSelector((state: any) => state.tweet)
   const listado: Tweet[] = tweets || []
+
+  useEffect(() => {
+    const timer = setTimeout(() => dispatch(GetListTweets()), 60000)
+    return () => clearTimeout(timer)
+  })
+
   useEffect(() => {
     dispatch(GetListTweets())
+
     return () => {}
   }, [dispatch])
   return (
