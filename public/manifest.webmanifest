@@ -1,40 +1,40 @@
 {
-    "theme_color": "#ed1849",
-    "background_color": "#ed1849",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "name": "Rancagua Digital App",
-    "short_name": "Rancagua Digital",
-    "description": "Aplicaci\u00f3n informativa de la comuna de Rancagua",
-    "icons": [
-        {
-            "src": "assets/icon/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/icon/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/icon/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/icon/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-            
-        },
-               {
-            "src": "assets/icon/icon-maskable-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-            
-        }
-    ]
+  "theme_color": "#ed1849",
+  "background_color": "#ed1849",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Rancagua Digital App",
+  "short_name": "Rancagua Digital",
+  "orientation": "portrait-primary",
+
+  "description": "Aplicaci\u00f3n informativa de la comuna de Rancagua",
+  "icons": [
+    {
+      "src": "assets/icon/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
