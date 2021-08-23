@@ -92,29 +92,31 @@ self.addEventListener("install", function (event) {
 })
 
 self.addEventListener("push", async function (event) {
-  const title = "Rancagua Digital"
-  const { data } = event
-  const json = data ? await data.json() : ""
-  console.log("ha llegado una notificacion", json)
+  try {
+    const title = "Rancagua Digital"
+    const { data } = event
+    const json = data ? await data.json() : ""
+    const { message, image, link } = json.params
+    const options = {
+      body: message,
+      icon: `assets/icon/icon-192x192.png`,
+      badge: "assets/icon/favicon.ico",
+      image: image.src,
+      vibrate: [
+        125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600,
+      ],
+      openUrl: link,
+      data: {
+        // url: 'https://google.com',
+        url: link || "https://rancagua-digital-app.web.app/tabs/home",
+        id: "id",
+      },
+    }
 
-  const { message, image, link } = json
-  const options = {
-    body: message,
-    icon: `assets/icon/icon-192x192.png`,
-    badge: "assets/icon/favicon.ico",
-    image: image.src,
-    vibrate: [
-      125, 75, 125, 275, 200, 275, 125, 75, 125, 275, 200, 600, 200, 600,
-    ],
-    openUrl: link,
-    data: {
-      // url: 'https://google.com',
-      url: link || "https://rancagua-digital-app.web.app/tabs/home",
-      id: "id",
-    },
+    event.waitUntil(self.registration.showNotification(title, options))
+  } catch (e) {
+    console.log("error en notificaciones", e)
   }
-
-  event.waitUntil(self.registration.showNotification(title, options))
 })
 
 // Cierra la notificacion
