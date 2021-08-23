@@ -91,12 +91,11 @@ self.addEventListener("install", function (event) {
   self.skipWaiting()
 })
 
-self.addEventListener("push", function (event) {
+self.addEventListener("push", async function (event) {
   const title = "Rancagua Digital"
   const { data } = event
-  console.log("ha llegado una notificacion", data)
-
-  const json = data ? data.json() : ""
+  const json = data ? await data.json() : ""
+  console.log("ha llegado una notificacion", json)
 
   const { message, image, link } = json
   const options = {
