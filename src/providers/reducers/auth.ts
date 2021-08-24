@@ -1,18 +1,29 @@
-import types from "../types"
+import { AUTH_LOADING, AUTH_ERROR, AUTH_SUCCESS } from '../types/auth'
 
 export const authReducer = (
   state = {},
-  action: { type: any; payload: { uid: any; displayName: any; email: any } },
+  action: { type: any; payload: { session: any; error: any } }
 ) => {
   switch (action.type) {
-    case types.LOGIN:
+    case AUTH_LOADING:
       return {
-        uid: action.payload.uid,
-        name: action.payload.displayName,
-        email: action.payload.email,
+        session: null,
+        loading: true,
+        error: ''
       }
-    case types.LOGOUT:
-      return {}
+    case AUTH_ERROR:
+      return {
+        session: null,
+        loading: false,
+        error: payload.error
+      }
+
+    case AUTH_SUCCESS:
+      return {
+        session: payload.session,
+        loading: false,
+        error: ''
+      }
 
     default:
       return {}

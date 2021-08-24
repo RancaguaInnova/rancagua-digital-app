@@ -31,9 +31,6 @@ const Login: React.FC<LoginProps> = () => {
         <Row justify="center">
           <Col md={12} xs={20}>
             <LoginBox />
-            {/* <CustomCard>
-              <LoginForm></LoginForm>
-            </CustomCard> */}
           </Col>
         </Row>
       </IonContent>
