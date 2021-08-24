@@ -21,7 +21,7 @@ import { isPlatform } from "@ionic/react"
 import "antd/dist/antd.css" // or 'antd/dist/antd.less'
 
 /* Theme variables */
-import "./theme/variables.scss"
+import "./theme/theme.scss"
 import "./index.scss"
 import MainTabs from "./components/MainTabs"
 import { Route, Redirect } from "react-router"
