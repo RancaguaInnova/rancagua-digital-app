@@ -11,23 +11,20 @@ import { Container, LoginFormContainer, LogoutContainer, Title } from './styles'
 export const LoginBox: FC = () => {
   const dispatch = useDispatch()
   const { error, loading, session } = useSelector((state: any) => state.auth)
-  console.log('error', error)
-  console.log('loading', loading)
-  console.log('session', session)
-  // auth logic
+
   const onSubmit = (data: AuthCredentials) => {
-    console.log('data', data)
     dispatch(login(data))
   }
-  // auth error logic
 
   return (
     <Container>
+      {/* WITHOUT SESSION */}
       {!session &&
         <LoginFormContainer>
           <Title>Iniciar Session</Title>
           <LoginForm onSubmit={onSubmit} loading={loading} error={error} />
         </LoginFormContainer>}
+      {/* WITH SESSION */}
       {session &&
         <LogoutContainer>
           <Title> Hola NOMBRE </Title>
