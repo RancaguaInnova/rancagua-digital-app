@@ -1,13 +1,19 @@
 import { FC } from 'react'
 import { Form, Input, Checkbox, Button, Row, Col } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import { CustomCol, CustomDivider } from './styles'
+import { CustomCol, CustomDivider, Error } from './styles'
 
 interface LoginFormProps {
   onSubmit: any
+  loading?: boolean
+  error?: string
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
+export const LoginForm: FC<LoginFormProps> = ({
+  onSubmit,
+  loading = false,
+  error = ''
+}) => {
   const [form] = Form.useForm()
   return (
     <Form
@@ -15,9 +21,7 @@ export const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
       form={form}
       className="login-form"
       initialValues={{ email: '', password: '' }}
-      onFinish={(values: any) => {
-        console.log('values!', values)
-      }}
+      onFinish={onSubmit}
       scrollToFirstError
     >
       <Form.Item
@@ -62,6 +66,8 @@ export const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
               htmlType="submit"
               className="login-form-button"
               shape="round"
+              disabled={loading}
+              loading={loading}
               block
             >
               Ingresar
@@ -70,16 +76,20 @@ export const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
         </Row>
       </Form.Item>
 
-      <Form.Item>
-        <Row justify="center">
+      <Row justify="center">
+        {error !== '' &&
           <CustomCol span="24">
-            <a href="">Crear una cuenta</a>
-          </CustomCol>
-          <CustomCol span="24">
-            <a href="">Olvide mi contraseña</a>
-          </CustomCol>
-        </Row>
-      </Form.Item>
+            <Error>
+              {error}
+            </Error>
+          </CustomCol>}
+        <CustomCol span="24">
+          <a href="">Crear una cuenta</a>
+        </CustomCol>
+        <CustomCol span="24">
+          <a href="">Olvide mi contraseña</a>
+        </CustomCol>
+      </Row>
     </Form>
   )
 }

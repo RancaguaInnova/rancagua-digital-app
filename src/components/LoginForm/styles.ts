@@ -12,3 +12,8 @@ export const CustomCol = styled(Col)`
   text-align: center;
   margin: .5rem 0;
 `
+
+export const Error = styled.p`
+  color: red;
+  text-align: center;
+`

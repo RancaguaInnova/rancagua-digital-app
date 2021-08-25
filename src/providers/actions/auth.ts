@@ -25,7 +25,7 @@ export const login = (data: AuthCredentials) => {
       } else {
         dispatch({
           type: AUTH_ERROR,
-          payload: { error: '¡Ocurrio un problema intente nuevamente!' }
+          payload: { error: '¡Ocurrio un problema, intente nuevamente!' }
         })
       }
     } catch (error) {

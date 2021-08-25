@@ -26,7 +26,7 @@ export const LoginBox: FC = () => {
       {!session &&
         <LoginFormContainer>
           <Title>Iniciar Session</Title>
-          <LoginForm onSubmit={onSubmit} />
+          <LoginForm onSubmit={onSubmit} loading={loading} error={error} />
         </LoginFormContainer>}
       {session &&
         <LogoutContainer>
