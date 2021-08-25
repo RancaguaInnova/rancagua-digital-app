@@ -65,7 +65,7 @@ export const Menu = () => {
             </IonItem>
             <IonItem
               button
-              routerLink={"/tabs/subcription"}
+              routerLink={"/tabs/subscription"}
               routerDirection="none"
             >
               <IonIcon icon={notifications} slot="start" />

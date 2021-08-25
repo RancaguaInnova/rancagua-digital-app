@@ -5,9 +5,9 @@ import { Card } from "antd"
 import styled from "styled-components"
 import moment from "moment"
 import "./styles.scss"
-import { Browser } from '@capacitor/browser';
+import { Browser } from "@capacitor/browser"
 import openCapacitorSite from "components/openCapacitorBrowser"
-
+import { FaBookReader } from "react-icons/fa"
 const idLocale = require("moment/locale/es")
 moment.updateLocale("es", idLocale)
 export const CardStyled = styled(Card)`
@@ -30,8 +30,11 @@ interface NewsCardProps {
 }
 const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
   const { Meta } = Card
-  console.log("tweet", tweet)
+  const openApp = (url: string) => {
+    console.log("url", url)
 
+    openCapacitorSite(url || "")
+  }
 
   return (
     <>
@@ -55,12 +58,15 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
           )
         }
       >
+        <h5>@munirancagua</h5>
         <Linkify
           componentDecorator={(decoratedHref, decoratedText, key) => (
-            // eslint-disable-next-line jsx-a11y/anchor-is-valid
-            <a onClick={() => openCapacitorSite(decoratedHref)} href="#" key={key}>
-              {decoratedText}
-            </a>
+            <p key={key}>
+              {" "}
+              <a onClick={() => openApp(decoratedHref)}>
+                <FaBookReader></FaBookReader> &nbsp; {decoratedText}
+              </a>
+            </p>
           )}
         >
           {tweet.text}

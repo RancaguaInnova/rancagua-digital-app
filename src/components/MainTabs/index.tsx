@@ -16,7 +16,7 @@ import ServicesPage from "pages/Services"
 import CalendarPage from "pages/Calendar"
 import InformationPage from "pages/Information"
 import LoginPage from "pages/Login"
-import SubcriptionPage from "pages/Subcription"
+import SubscriptionPage from "pages/Subscription"
 import AppViewPage from "pages/AppView"
 
 export const IonTabBarStyled = styled(IonTabBar)`
@@ -54,8 +54,8 @@ const MainTabs: FC = ({}) => {
         />
         <Route path="/tabs/:tab(login)" render={() => <LoginPage />} />
         <Route
-          path="/tabs/:tab(subcription)"
-          render={() => <SubcriptionPage />}
+          path="/tabs/:tab(subscription)"
+          render={() => <SubscriptionPage />}
         />
         <Route path="/tabs/:tab(appView)" render={() => <AppViewPage />} />
 
