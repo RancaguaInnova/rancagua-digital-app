@@ -1,10 +1,15 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from "@capacitor/cli"
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'rancagua-digital-app',
-  webDir: 'build',
-  bundledWebRuntime: false
-};
+  appId: "com.rancagua.digital",
+  appName: "Rancagua Digital",
+  webDir: "build",
+  bundledWebRuntime: false,
+  plugins: {
+    PushNotifications: {
+      presentationOptions: ["badge", "sound", "alert"],
+    },
+  },
+}
 
-export default config;
+export default config

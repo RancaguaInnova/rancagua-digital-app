@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.rancagua.digital;
 
 import com.getcapacitor.BridgeActivity;
 

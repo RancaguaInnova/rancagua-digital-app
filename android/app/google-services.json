@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629502181043",
+    "project_id": "rancagua-digital-app",
+    "storage_bucket": "rancagua-digital-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629502181043:android:82500aec568709bef8fac6",
+        "android_client_info": {
+          "package_name": "com.rancagua.digital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629502181043-birpeufkp5qsujj88k8vh9h0u2rduhmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrFKLUgMqPro9A_u1Dq5aoPnR_r_VxFVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629502181043-birpeufkp5qsujj88k8vh9h0u2rduhmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
