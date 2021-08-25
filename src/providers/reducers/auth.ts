@@ -1,10 +1,23 @@
 import { AUTH_LOADING, AUTH_ERROR, AUTH_SUCCESS } from '../types/auth'
 
+const initialState = {
+  session: null,
+  loading: false,
+  error: ''
+}
+
+interface AuthPayload {
+  session: any
+  error: any
+}
+
 export const authReducer = (
-  state = {},
-  action: { type: any; payload: { session: any; error: any } }
+  state = initialState,
+  action: { type: any; payload: AuthPayload }
 ) => {
-  switch (action.type) {
+  const { type, payload } = action
+
+  switch (type) {
     case AUTH_LOADING:
       return {
         session: null,
@@ -26,6 +39,6 @@ export const authReducer = (
       }
 
     default:
-      return {}
+      return state
   }
 }
