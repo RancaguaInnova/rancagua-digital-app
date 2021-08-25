@@ -1,36 +1,44 @@
+import { FC } from 'react'
 import { Form, Input, Checkbox, Button, Row, Col } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { CustomCol, CustomDivider } from './styles'
-export const LoginForm = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
-  }
+
+interface LoginFormProps {
+  onSubmit: any
+}
+
+export const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
+  const [form] = Form.useForm()
   return (
     <Form
       name="normal_login"
+      form={form}
       className="login-form"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
+      initialValues={{ email: '', password: '' }}
+      onFinish={(values: any) => {
+        console.log('values!', values)
+      }}
+      scrollToFirstError
     >
       <Form.Item
-        // name="username"
+        name="email"
         rules={[
+          { type: 'email', message: 'Ingrese un email válido' },
           {
             required: true,
-            message: 'Por favor ingrese su nombre de ususario!'
+            message: 'Por favor ingrese su email'
           }
         ]}
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Usuario"
+          placeholder="Email"
           bordered={false}
         />
-        <CustomDivider />
       </Form.Item>
 
       <Form.Item
-        // name="password"
+        name="password"
         rules={[
           {
             required: true,
@@ -41,10 +49,9 @@ export const LoginForm = () => {
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="contraseña"
+          placeholder="Contraseña"
           bordered={false}
         />
-        <CustomDivider />
       </Form.Item>
 
       <Form.Item>
@@ -65,10 +72,10 @@ export const LoginForm = () => {
 
       <Form.Item>
         <Row justify="center">
-          <CustomCol span="12">
-            <a href="">Registrarse Ahora!</a>
+          <CustomCol span="24">
+            <a href="">Crear una cuenta</a>
           </CustomCol>
-          <CustomCol span="12">
+          <CustomCol span="24">
             <a href="">Olvide mi contraseña</a>
           </CustomCol>
         </Row>

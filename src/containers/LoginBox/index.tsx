@@ -1,7 +1,12 @@
 import { FC } from 'react'
+import { Button } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
+import { AuthCredentials } from 'providers/types/auth'
 import { login } from 'providers/actions/auth'
-import { Container } from './styles'
+
+import { LoginForm } from 'components/LoginForm'
+
+import { Container, LoginFormContainer, LogoutContainer, Title } from './styles'
 
 export const LoginBox: FC = () => {
   const dispatch = useDispatch()
@@ -10,18 +15,24 @@ export const LoginBox: FC = () => {
   console.log('loading', loading)
   console.log('session', session)
   // auth logic
-  const onSubmit = () => {
-    console.log('olanda!')
-    dispatch(login({ email: 'jose@smart.rancagua.cl', password: '12345678' }))
+  const onSubmit = (data: AuthCredentials) => {
+    console.log('data', data)
+    dispatch(login(data))
   }
   // auth error logic
 
   return (
     <Container>
-      aqui el login box
-      <button type="button" onClick={onSubmit}>
-        hola
-      </button>
+      {!session &&
+        <LoginFormContainer>
+          <Title>Iniciar Session</Title>
+          <LoginForm onSubmit={onSubmit} />
+        </LoginFormContainer>}
+      {session &&
+        <LogoutContainer>
+          <Title> Hola NOMBRE </Title>
+          <Button>CERRAR SESION</Button>
+        </LogoutContainer>}
     </Container>
   )
 }
