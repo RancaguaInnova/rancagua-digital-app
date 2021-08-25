@@ -48,8 +48,8 @@ const Header: FC<HeaderProps> = ({ title, back = false }) => {
               <IonButton routerLink={"/tabs/information"}>
                 Información
               </IonButton>
-              <IonButton routerLink={"/tabs/subcription"}>
-                Subcripción
+              <IonButton routerLink={"/tabs/subscription"}>
+                Suscripción
               </IonButton>
 
               <IonButton routerLink={"/tabs/login"}>Login</IonButton>

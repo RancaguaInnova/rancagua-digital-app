@@ -14,9 +14,12 @@ export const getPublicKey = async () => {
     return null
   }
 }
-export const addSubcription = async (subcription:any) => {
+export const addSubscription = async (subscription: any) => {
   try {
-    let { data, status } = await axios.post("/city/notifications/subscribe",subcription)
+    let { data, status } = await axios.post(
+      "/city/notifications/subscribe",
+      subscription,
+    )
 
     if (status === 200) {
       return data
