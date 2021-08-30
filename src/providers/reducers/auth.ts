@@ -1,4 +1,9 @@
-import { AUTH_LOADING, AUTH_ERROR, AUTH_SUCCESS } from '../types/auth'
+import {
+  AUTH_LOADING,
+  AUTH_ERROR,
+  AUTH_SUCCESS,
+  AUTH_LOGOUT
+} from '../types/auth'
 
 const initialState = {
   session: null,
@@ -25,13 +30,21 @@ export const authReducer = (
         error: ''
       }
     case AUTH_ERROR:
+      //TODO: remove from localStorage
       return {
         session: null,
         loading: false,
         error: payload.error
       }
-
+    case AUTH_LOGOUT:
+      //TODO: remove from localStorage
+      return {
+        session: null,
+        loading: false,
+        error: payload.error
+      }
     case AUTH_SUCCESS:
+      //TODO:  save into localStorage
       return {
         session: payload.session,
         loading: false,
