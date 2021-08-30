@@ -1,80 +1,95 @@
-import { Form, Input, Checkbox, Button, Row, Col } from "antd"
-import { UserOutlined, LockOutlined } from "@ant-design/icons"
-import { CustomCol, CustomDivider } from "./styles"
-export const LoginForm = () => {
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values)
-  }
+import { FC } from 'react'
+import { Form, Input, Checkbox, Button, Row, Col } from 'antd'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { CustomCol, CustomDivider, Error } from './styles'
+
+interface LoginFormProps {
+  onSubmit: any
+  loading?: boolean
+  error?: string
+}
+
+export const LoginForm: FC<LoginFormProps> = ({
+  onSubmit,
+  loading = false,
+  error = ''
+}) => {
+  const [form] = Form.useForm()
   return (
-    <div>
-      <Form
-        name="normal_login"
-        className="login-form"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
+    <Form
+      name="normal_login"
+      form={form}
+      className="login-form"
+      initialValues={{ email: '', password: '' }}
+      onFinish={onSubmit}
+      scrollToFirstError
+    >
+      <Form.Item
+        name="email"
+        rules={[
+          { type: 'email', message: 'Ingrese un email válido' },
+          {
+            required: true,
+            message: 'Por favor ingrese su email'
+          }
+        ]}
       >
-        <Form.Item
-          // name="username"
-          rules={[
-            {
-              required: true,
-              message: "Por favor ingrese su nombre de ususario!",
-            },
-          ]}
-        >
-          <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Usuario"
-            bordered={false}
-          />
-          <CustomDivider></CustomDivider>
-        </Form.Item>
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Email"
+          bordered={false}
+        />
+      </Form.Item>
 
-        <Form.Item
-          // name="password"
-          rules={[
-            {
-              required: true,
-              message: "Por favor ingrese su contraseña!",
-            },
-          ]}
-        >
-          <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="contraseña"
-            bordered={false}
-          />
-          <CustomDivider></CustomDivider>
-        </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: 'Por favor ingrese su contraseña!'
+          }
+        ]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Contraseña"
+          bordered={false}
+        />
+      </Form.Item>
 
-        <Form.Item>
-          <Row justify="center">
-            <Col span="8" md="4" lg="4">
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-                shape="round"
-                block
-              >
-                Ingresar
-              </Button>
-            </Col>
-          </Row>
-        </Form.Item>
+      <Form.Item>
+        <Row justify="center">
+          <Col span="8" md="4" lg="4">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+              shape="round"
+              disabled={loading}
+              loading={loading}
+              block
+            >
+              Ingresar
+            </Button>
+          </Col>
+        </Row>
+      </Form.Item>
 
-        <Form.Item>
-          <Row justify="center">
-            <CustomCol span="12">
-              <a href="">Registrarse Ahora!</a>
-            </CustomCol>
-            <CustomCol span="12">
-              <a href="">Olvide mi contraseña</a>
-            </CustomCol>
-          </Row>
-        </Form.Item>
-      </Form>
-    </div>
+      <Row justify="center">
+        {error !== '' &&
+          <CustomCol span="24">
+            <Error>
+              {error}
+            </Error>
+          </CustomCol>}
+        <CustomCol span="24">
+          <a href="">Crear una cuenta</a>
+        </CustomCol>
+        <CustomCol span="24">
+          <a href="">Olvide mi contraseña</a>
+        </CustomCol>
+      </Row>
+    </Form>
   )
 }

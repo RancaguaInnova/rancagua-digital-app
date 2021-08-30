@@ -1,20 +1,57 @@
-import types from "../types"
+import {
+  AUTH_LOADING,
+  AUTH_ERROR,
+  AUTH_SUCCESS,
+  AUTH_LOGOUT
+} from '../types/auth'
+
+const initialState = {
+  session: null,
+  loading: false,
+  error: ''
+}
+
+interface AuthPayload {
+  session: any
+  error: any
+}
 
 export const authReducer = (
-  state = {},
-  action: { type: any; payload: { uid: any; displayName: any; email: any } },
+  state = initialState,
+  action: { type: any; payload: AuthPayload }
 ) => {
-  switch (action.type) {
-    case types.LOGIN:
+  const { type, payload } = action
+
+  switch (type) {
+    case AUTH_LOADING:
       return {
-        uid: action.payload.uid,
-        name: action.payload.displayName,
-        email: action.payload.email,
+        session: null,
+        loading: true,
+        error: ''
       }
-    case types.LOGOUT:
-      return {}
+    case AUTH_ERROR:
+      //TODO: remove from localStorage
+      return {
+        session: null,
+        loading: false,
+        error: payload.error
+      }
+    case AUTH_LOGOUT:
+      //TODO: remove from localStorage
+      return {
+        session: null,
+        loading: false,
+        error: payload.error
+      }
+    case AUTH_SUCCESS:
+      //TODO:  save into localStorage
+      return {
+        session: payload.session,
+        loading: false,
+        error: ''
+      }
 
     default:
-      return {}
+      return state
   }
 }
