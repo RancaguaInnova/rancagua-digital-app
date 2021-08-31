@@ -1,13 +1,13 @@
-import { IonContent, IonPage } from "@ionic/react"
-import { Col, Row } from "antd"
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import Header from "components/Header"
-import ServiceItem from "components/ServiceItem"
-import { Application } from "interfaces/applications"
-import { GetListApplications } from "providers/actions/application"
+import { IonContent, IonPage } from '@ionic/react'
+import { Col, Row } from 'antd'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Header from 'components/Header'
+import ServiceItem from 'components/ServiceItem'
+import { Application } from 'core/interfaces/applications'
+import { GetListApplications } from 'providers/redux/actions/application'
 
-import "./styles.scss"
+import './styles.scss'
 
 const ServicesPage: React.FC = () => {
   const dispatch = useDispatch()
@@ -17,14 +17,17 @@ const ServicesPage: React.FC = () => {
     ? applications
     : dispatch(GetListApplications())
 
-  useEffect(() => {
-    dispatch(GetListApplications())
-    console.log("me vuelvo a ejecutar")
-    return () => {}
-  }, [dispatch])
+  useEffect(
+    () => {
+      dispatch(GetListApplications())
+      console.log('me vuelvo a ejecutar')
+      return () => {}
+    },
+    [dispatch]
+  )
   return (
     <IonPage>
-      <Header title="Servicios Disponibles"></Header>
+      <Header title="Servicios Disponibles" />
 
       <IonContent fullscreen>
         <Row>
@@ -33,7 +36,7 @@ const ServicesPage: React.FC = () => {
             listado.map((application, index) => {
               return (
                 <Col xs={24} sm={24} md={12} lg={8} span={8} key={index}>
-                  <ServiceItem application={application}></ServiceItem>
+                  <ServiceItem application={application} />
                 </Col>
               )
             })}

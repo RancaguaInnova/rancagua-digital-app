@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Button } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { AuthCredentials } from 'providers/types/auth'
-import { login } from 'providers/actions/auth'
+import { AuthCredentials } from 'core/types/auth'
+import { login } from 'providers/redux/actions/auth'
 
 import { LoginForm } from 'components/LoginForm'
 

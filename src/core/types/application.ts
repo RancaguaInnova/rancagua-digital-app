@@ -1,4 +1,4 @@
-import { Application } from 'interfaces/applications'
+import { Application } from 'core/interfaces/applications'
 
 interface Payload {
   listApplication: Application[]

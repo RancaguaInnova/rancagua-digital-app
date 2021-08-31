@@ -1,6 +1,6 @@
 import { Moment } from 'moment'
 import React, { FC } from 'react'
-import { Event } from 'interfaces/event'
+import { Event } from 'core/interfaces/event'
 import EventCard from '../EventCard'
 import { Col, Row } from 'antd'
 import { DivStyled } from './styles'

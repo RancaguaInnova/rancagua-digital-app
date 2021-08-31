@@ -4,29 +4,36 @@ import {
   AUTH_LOADING,
   AUTH_ERROR,
   AUTH_SUCCESS,
-  AuthCredentials
-} from '../types/auth'
-import axios from 'axios'
-import { url } from '../urlprovider'
-
-axios.defaults.baseURL = url
+  AuthCredentials,
+  AuthResult
+} from 'core/types/auth'
+import Auth from 'providers/api/auth'
+import { Session } from 'core/types/session'
+import { setInStorage } from 'hooks/useStorage'
 
 export const login = (data: AuthCredentials) => {
   return async (dispatch: Dispatch) => {
     try {
       console.log('la data!', data)
       dispatch({ type: AUTH_LOADING })
-      const authResult = await axios.get(`/auth/login`)
+      const authResult: AuthResult | null = await Auth.login(data)
       if (_get(authResult, 'status', 500) === 200) {
+        // update global state
+        const session: Session = _get(authResult, 'data.data', null)
+
         dispatch({
           type: AUTH_SUCCESS,
-          payload: { session: _get(authResult, 'data.data', null) }
+          payload: { session }
         })
+        // save in storage
+        setInStorage('session', session)
       } else {
         dispatch({
           type: AUTH_ERROR,
           payload: { error: '¡Ocurrio un problema, intente nuevamente!' }
         })
+        // save in storage
+        setInStorage('session', null)
       }
     } catch (error) {
       console.log(error)
@@ -34,6 +41,12 @@ export const login = (data: AuthCredentials) => {
         type: AUTH_ERROR,
         payload: { error: '¡Ocurrio un problema intente nuevamente!' }
       })
+      // save in storage
+      setInStorage('session', null)
     }
   }
+}
+
+export const logout = () => {
+  setInStorage('session', null)
 }

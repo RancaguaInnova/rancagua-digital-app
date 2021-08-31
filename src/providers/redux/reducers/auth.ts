@@ -3,7 +3,7 @@ import {
   AUTH_ERROR,
   AUTH_SUCCESS,
   AUTH_LOGOUT
-} from '../types/auth'
+} from 'core/types/auth'
 
 const initialState = {
   session: null,

@@ -1,4 +1,4 @@
-import { Event } from "../../interfaces/event"
+import { Event } from '../../core/interfaces/event'
 
 export interface IPayload {
   eventList: Event[]
