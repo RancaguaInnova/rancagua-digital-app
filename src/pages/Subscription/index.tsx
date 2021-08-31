@@ -19,7 +19,7 @@ import {
   Token,
 } from "@capacitor/push-notifications"
 import { Toast } from "@capacitor/toast"
-import { setValue, getValue } from "providers/storage"
+import { WebStorage } from "providers/storage"
 
 interface LoginProps {}
 
@@ -31,7 +31,7 @@ const Login: React.FC<LoginProps> = () => {
 
   useEffect(() => {
     async function setv() {
-      let check = (await getValue("check")) === "true" || false
+      let check = (await WebStorage.getItem("check")) === "true" || false
       setChecked(check)
     }
     setv()
@@ -99,7 +99,7 @@ const Login: React.FC<LoginProps> = () => {
 
   const handleSubcription = async (e: CustomEvent<ToggleChangeEventDetail>) => {
     setChecked(e.detail.checked)
-    setValue("check", e.detail.checked.toString())
+    WebStorage.setItem("check", e.detail.checked.toString())
     if (e.detail.checked) {
       if (navigator.serviceWorker) {
         navigator.serviceWorker.getRegistration().then(async (registration) => {

@@ -1,18 +1,20 @@
 import { Storage } from "@capacitor/storage"
+import { Capacitor } from "@capacitor/core"
 
-export const setValue = async (key: string, value: string) => {
-  await Storage.set({
-    key: key,
-    value: value,
-  })
-}
+const isAvailable = Capacitor.isPluginAvailable("Storage")
 
-export const getValue = async (key: string) => {
-  const { value } = await Storage.get({ key: key })
 
-  return value
-}
-
-export const removeValue = async (key: string) => {
-  await Storage.remove({ key: key })
+export const WebStorage = {
+  getItem: async (key: string) => {
+    return  isAvailable?   Promise.resolve(Storage.get({ key: key })) : Promise.resolve(window.localStorage.getItem(key))
+  },
+  setItem: async (key: string, data: string) => {
+    return  isAvailable?  Promise.resolve(Storage.set({
+      key: key,
+      value: data,
+    })):  Promise.resolve(window.localStorage.setItem(key, data))
+  },
+  removeItem: async (key: string) => {
+    return isAvailable? Promise.resolve( Storage.remove({ key: key })): Promise.resolve(window.localStorage.removeItem(key))
+  }
 }
