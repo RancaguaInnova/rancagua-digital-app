@@ -4,7 +4,8 @@ import {
   AUTH_LOADING,
   AUTH_ERROR,
   AUTH_SUCCESS,
-  AuthCredentials
+  AuthCredentials,
+  AuthResult
 } from '../types/auth'
 import axios from 'axios'
 import { url } from '../urlprovider'
@@ -16,7 +17,8 @@ export const login = (data: AuthCredentials) => {
     try {
       console.log('la data!', data)
       dispatch({ type: AUTH_LOADING })
-      const authResult = await axios.get(`/auth/login`)
+      const authResult: AuthResult = await axios.post(`/auth/login`, data)
+      console.log('authResult', authResult.data)
       if (_get(authResult, 'status', 500) === 200) {
         dispatch({
           type: AUTH_SUCCESS,

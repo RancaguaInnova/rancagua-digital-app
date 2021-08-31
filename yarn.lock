@@ -1282,10 +1282,20 @@
   resolved "https://registry.npmjs.org/@capacitor/keyboard/-/keyboard-1.0.1.tgz"
   integrity sha512-Xn1eMUfQ/DxvbCm4nedNOcZ2kIEsTlC9vuvHTaDUr+/QC+GciVugTTjflGcCuJ2i4qTTwyf0UNfBKgvEzKKtnQ==
 
+"@capacitor/push-notifications@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/push-notifications/-/push-notifications-1.0.3.tgz#448d0b77dbf19c65b831f7f41eca68bcacedae78"
+  integrity sha512-T3XBQH/ZClVaIXfjCuKEEQkk7zfc+ip72Oq+uoq4hbzadQimsu2mrme52dh2UeLV5pfu0NnTwsAxnxOj4gdtpQ==
+
 "@capacitor/status-bar@1.0.1":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-1.0.1.tgz"
   integrity sha512-5JwaseLxyhT8P86WiL776+1UTxR3k7klH4hU+gBD5UdAHRP4/jyS1/FiEuUpkMAMy6yvCJcDwZl8b6P1zWbiMQ==
+
+"@capacitor/toast@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/toast/-/toast-1.0.2.tgz#3984960b797a6dc6ac971b0602bf8c363b39394f"
+  integrity sha512-4R4aUP/BeqQ9/CRJpuoE+U+3tO1pmoZE8fNPhmcXZJYNedprX/uZfNzxBDz6kCJ90RETjrF4e/BxtBFXLiXxxQ==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
