@@ -1,6 +1,6 @@
-import { Event } from 'interfaces/event'
-import types from '../types'
-import { IEvent } from '../types/event'
+import { Event } from 'core/interfaces/event'
+import types from 'providers/redux/types'
+import { IEvent } from 'core/types/event'
 
 interface IEventState {
   event?: Event
@@ -8,18 +8,18 @@ interface IEventState {
 }
 
 const initialState: IEventState = {
-  tweetList: [],
+  tweetList: []
 }
 
 export const eventReducer = (state = initialState, action: IEvent) => {
   switch (action.type) {
     case types.GET_EVENT:
       return {
-        tweet: action.payload.event,
+        tweet: action.payload.event
       }
     case types.GET_LIST_EVENTS:
       return {
-        tweets: action.payload.eventList || [],
+        tweets: action.payload.eventList || []
       }
 
     default:

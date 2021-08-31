@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { WebStorage } from 'providers/storage/webStorage'
 
 // TODO: Add capacitor Logic here!
-const STORAGE = window.localStorage
+const STORAGE = WebStorage
 
-export const getFromStorage = (key, initialValue) => {
-  return () => {
+export const getFromStorage = async (key: string, initialValue: any) => {
+  return async () => {
     try {
-      const item = STORAGE.getItem(key)
+      const item = await STORAGE.getItem(key)
       return item ? JSON.parse(item) : initialValue
     } catch (e) {
       console.log(e)
@@ -15,11 +16,13 @@ export const getFromStorage = (key, initialValue) => {
   }
 }
 
-export const setInStorage = (key, value) => {
+export const setInStorage = async (key: string, value: any) => {
   try {
     if (value !== null) {
       // save
-      STORAGE.setItem(key, JSON.stringify(value))
+      await STORAGE.setItem(key, JSON.stringify(value)).then(() => {
+        console.log('saved!')
+      })
     } else {
       // remove from storage
       STORAGE.removeItem(key)
@@ -29,16 +32,23 @@ export const setInStorage = (key, value) => {
   }
 }
 
-export const useStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(
-    getFromStorage(key, initialValue)
-  )
-  const setValue = value => {
+export const useStorage = (key: string, initialValue: any) => {
+  const [storedValue, setStoredValue] = useState()
+
+  // TODO: WARNING! Check this functionality
+  useEffect(() => {
+    ;(async () => {
+      const value = await getFromStorage(key, initialValue)
+      setValue(value)
+    })()
+  }, [])
+
+  const setValue = (value: any) => {
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value
       setStoredValue(valueToStore)
-      setInStorage(key, valueToStore)
+      setInStorage(key, valueToStore).then(() => {})
     } catch (error) {
       console.log(error)
     }

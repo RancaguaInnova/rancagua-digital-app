@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Tweet } from "interfaces/tweet"
+import { Tweet } from "core/interfaces/tweet"
 import Linkify from "react-linkify"
 import { Card } from "antd"
 import styled from "styled-components"

@@ -1,4 +1,4 @@
-import { Tweet } from "../../interfaces/tweet"
+import { Tweet } from '../../core/interfaces/tweet'
 
 export interface IPayload {
   tweetList: Tweet[]

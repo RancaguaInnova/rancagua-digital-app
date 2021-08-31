@@ -1,13 +1,13 @@
-import { Dispatch } from "redux"
-import { Event } from "../../interfaces/event"
-import types from "../types"
-import axios from "axios"
-import { url } from "../urlprovider"
+import { Dispatch } from 'redux'
+import { Event } from 'core/interfaces/event'
+import types from 'providers/redux/types'
+import axios from 'axios'
+import { url } from 'providers/urlprovider'
 
 axios.defaults.baseURL = url
 
 export const GetListEvents = () => {
-  console.log("test")
+  console.log('test')
   return async (dispach: Dispatch) => {
     try {
       let events: Event[] = []
@@ -28,7 +28,7 @@ export const eventList = (events: Event[]) => {
   return {
     type: types.GET_LIST_EVENTS,
     payload: {
-      eventList: events,
-    },
+      eventList: events
+    }
   }
 }

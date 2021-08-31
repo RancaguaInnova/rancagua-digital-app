@@ -1,8 +1,8 @@
-import { Dispatch } from "redux"
-import { Tweet } from "../../interfaces/tweet"
-import types from "../types"
-import axios from "axios"
-import { url } from "../urlprovider"
+import { Dispatch } from 'redux'
+import { Tweet } from 'core/interfaces/tweet'
+import types from 'providers/redux/types'
+import axios from 'axios'
+import { url } from 'providers/urlprovider'
 
 axios.defaults.baseURL = url
 
@@ -27,7 +27,7 @@ export const tweetList = (tweets: Tweet[]) => {
   return {
     type: types.GET_LIST_TWEETS,
     payload: {
-      tweetList: tweets,
-    },
+      tweetList: tweets
+    }
   }
 }
