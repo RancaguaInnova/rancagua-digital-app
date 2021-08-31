@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react"
-import {
-  IonContent,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonPage,
-  IonText,
-  IonToggle,
-} from "@ionic/react"
+import { IonContent, IonItem, IonLabel, IonPage, IonToggle } from "@ionic/react"
 import Header from "components/Header"
 import { Col, Row } from "antd"
 import { CustomCard } from "./styles"
-import { getPublicKey, addSubscription } from "providers/api/notification"
+import {
+  getPublicKey,
+  addSubscription,
+  addSubscriptionApp,
+} from "providers/api/notification"
 import convertVapidKey from "convert-vapid-public-key"
 import { ToggleChangeEventDetail } from "@ionic/core"
 import { Capacitor } from "@capacitor/core"
@@ -22,16 +18,24 @@ import {
   PushNotifications,
   Token,
 } from "@capacitor/push-notifications"
-import { isPlatform } from "@ionic/react"
 import { Toast } from "@capacitor/toast"
+import { setValue, getValue } from "providers/storage"
 
 interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
   let swReg: ServiceWorkerRegistration | undefined
   const isAvailable = Capacitor.isPluginAvailable("PushNotifications")
-
   const [checked, setChecked] = useState(false)
+  const [notifytoken, setNotify] = useState("")
+
+  useEffect(() => {
+    async function setv() {
+      let check = (await getValue("check")) === "true" || false
+      setChecked(check)
+    }
+    setv()
+  }, [])
 
   const register = () => {
     console.log("Initializing HomePage")
@@ -39,9 +43,13 @@ const Login: React.FC<LoginProps> = () => {
     // Register with Apple / Google to receive push via APNS/FCM
     PushNotifications.register()
 
-    // On success, we should be able to receive notifications
-    PushNotifications.addListener("registration", (token: Token) => {
-      showToast("Push registration success")
+    PushNotifications.addListener("registration", async (token: Token) => {
+      try {
+        let respuesta = await addSubscriptionApp(token.value)
+      } catch (error) {
+        showToast("error" + error)
+      }
+      showToast("Push registro exitoso")
     })
 
     // Some issue with our setup and push will not work
@@ -64,8 +72,6 @@ const Login: React.FC<LoginProps> = () => {
         ])
       },
     )
-
-    // Method called when tapping on a notification
     PushNotifications.addListener(
       "pushNotificationActionPerformed",
       (notification: ActionPerformed) => {
@@ -90,24 +96,17 @@ const Login: React.FC<LoginProps> = () => {
       text: msg,
     })
   }
-  useEffect(() => {
-    showToast("push notification available:" + isAvailable)
-    console.log("push notification available", isAvailable)
-  }, [])
 
   const handleSubcription = async (e: CustomEvent<ToggleChangeEventDetail>) => {
     setChecked(e.detail.checked)
-    console.log("e.detail.checked", e.detail.checked)
+    setValue("check", e.detail.checked.toString())
     if (e.detail.checked) {
-      console.log("subcribe")
-
       if (navigator.serviceWorker) {
         navigator.serviceWorker.getRegistration().then(async (registration) => {
           swReg = registration
           if (!swReg) return console.log("No hay registro de SW", swReg)
           let k = await getPublicKey()
           const key = convertVapidKey(k)
-          console.log("key", key)
           swReg.pushManager
             .subscribe({
               userVisibleOnly: true,
@@ -128,9 +127,9 @@ const Login: React.FC<LoginProps> = () => {
           if (res.receive !== "granted") {
             PushNotifications.requestPermissions().then((res) => {
               if (res.receive === "denied") {
-                showToast("Push Notification permission denied")
+                showToast("Permiso de notificación push denegado")
               } else {
-                showToast("Push Notification permission granted")
+                showToast("Permiso de notificación push concedido")
                 register()
               }
             })
@@ -140,7 +139,6 @@ const Login: React.FC<LoginProps> = () => {
         })
       }
     } else {
-      //unsubcribe
       console.log("unsubcribe")
     }
   }
@@ -164,6 +162,11 @@ const Login: React.FC<LoginProps> = () => {
           </Col>
         </Row>
         <Row>
+          <Col md={12} xs={20}>
+            <p>{notifytoken}</p>
+          </Col>
+        </Row>
+        {/*    <Row>
           {" "}
           <Col md={12} xs={20}>
             {notifications.length !== 0 && (
@@ -187,7 +190,7 @@ const Login: React.FC<LoginProps> = () => {
               </IonList>
             )}
           </Col>
-        </Row>
+        </Row> */}
       </IonContent>
     </IonPage>
   )

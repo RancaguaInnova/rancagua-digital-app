@@ -1,5 +1,6 @@
 import axios from "axios"
 import { url } from "providers/urlprovider"
+import { Token } from "@capacitor/push-notifications"
 axios.defaults.baseURL = url
 
 export const getPublicKey = async () => {
@@ -28,5 +29,17 @@ export const addSubscription = async (subscription: any) => {
   } catch (e) {
     console.log(e)
     return null
+  }
+}
+export const addSubscriptionApp = async (token: string) => {
+  try {
+    let res = await axios.post("/city/notifications/subscribeApp", {
+      token: token,
+    })
+
+    return res
+  } catch (e) {
+    console.log(e)
+    return e
   }
 }

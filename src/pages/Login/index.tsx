@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { IonContent, IonPage, useIonRouter } from '@ionic/react'
-import Header from 'components/Header'
-import { Button, Card, Col, Layout, Row } from 'antd'
-import { LoginForm } from 'components/LoginForm'
-import { CustomCard } from './styles'
-import { getPublicKey } from 'providers/api/notification'
-import convertVapidKey from 'convert-vapid-public-key'
-import { LoginBox } from 'containers/LoginBox'
+import React, { useEffect, useState } from "react"
+import { IonContent, IonPage, useIonRouter } from "@ionic/react"
+import Header from "components/Header"
+import { Col, Row } from "antd"
+import { LoginBox } from "containers/LoginBox"
 interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const router = useIonRouter()
-  useEffect(
-    () => {
-      if (isAuthenticated) {
-        router.push('/tabs/tab1', 'none', 'replace')
-      }
-    },
-    [isAuthenticated, router]
-  )
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/tabs/tab1", "none", "replace")
+    }
+  }, [isAuthenticated, router])
 
   useEffect(() => {}, [])
 
