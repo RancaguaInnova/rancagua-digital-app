@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
-import { WebStorage } from 'providers/storage/webStorage'
-
-// TODO: Add capacitor Logic here!
-const STORAGE = WebStorage
+import { AppStorage } from 'providers/storage'
 
 export const getFromStorage = async (key: string, initialValue: any) => {
   return async () => {
     try {
-      const item = await STORAGE.getItem(key)
-      return item ? JSON.parse(item) : initialValue
+      const item: any = await AppStorage.getItem(key)
+      return typeof item === 'string' ? JSON.parse(item) : initialValue
     } catch (e) {
       console.log(e)
       return initialValue
@@ -20,12 +17,12 @@ export const setInStorage = async (key: string, value: any) => {
   try {
     if (value !== null) {
       // save
-      await STORAGE.setItem(key, JSON.stringify(value)).then(() => {
+      await AppStorage.setItem(key, JSON.stringify(value)).then(() => {
         console.log('saved!')
       })
     } else {
       // remove from storage
-      STORAGE.removeItem(key)
+      AppStorage.removeItem(key)
     }
   } catch (error) {
     console.log('setInStorageError', error)
