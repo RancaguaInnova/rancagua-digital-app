@@ -15,17 +15,17 @@ export const getFromStorage = async (key: string, initialValue: any) => {
 
 export const setInStorage = async (key: string, value: any) => {
   try {
+    console.log('save!!!', key, value)
     if (value !== null) {
       // save
-      await AppStorage.setItem(key, JSON.stringify(value)).then(() => {
-        console.log('saved!')
-      })
+      return await AppStorage.setItem(key, JSON.stringify(value))
     } else {
       // remove from storage
-      AppStorage.removeItem(key)
+      return await AppStorage.removeItem(key)
     }
   } catch (error) {
     console.log('setInStorageError', error)
+    return Promise.reject(error)
   }
 }
 

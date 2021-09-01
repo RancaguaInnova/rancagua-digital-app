@@ -3,7 +3,7 @@ import {
   AUTH_ERROR,
   AUTH_SUCCESS,
   AUTH_LOGOUT
-} from 'core/types/auth'
+} from 'providers/redux/types'
 
 const initialState = {
   session: null,
@@ -41,7 +41,7 @@ export const authReducer = (
       return {
         session: null,
         loading: false,
-        error: payload.error
+        error: ''
       }
     case AUTH_SUCCESS:
       //TODO:  save into localStorage
