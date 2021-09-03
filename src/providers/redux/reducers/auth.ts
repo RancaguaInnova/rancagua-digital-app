@@ -4,8 +4,10 @@ import {
   AUTH_SUCCESS,
   AUTH_LOGOUT
 } from 'providers/redux/types'
+import _get from 'lodash/get'
 
-const initialState = {
+import { IAuth } from 'core/types/auth'
+var initialState = {
   session: null,
   loading: false,
   error: ''
@@ -16,10 +18,7 @@ interface AuthPayload {
   error: any
 }
 
-export const authReducer = (
-  state = initialState,
-  action: { type: any; payload: AuthPayload }
-) => {
+export const authReducer = (state = initialState, action: IAuth) => {
   const { type, payload } = action
 
   switch (type) {
@@ -34,7 +33,7 @@ export const authReducer = (
       return {
         session: null,
         loading: false,
-        error: payload.error
+        error: _get(payload, 'error', '')
       }
     case AUTH_LOGOUT:
       //TODO: remove from localStorage
@@ -46,7 +45,7 @@ export const authReducer = (
     case AUTH_SUCCESS:
       //TODO:  save into localStorage
       return {
-        session: payload.session,
+        session: _get(payload, 'session', null),
         loading: false,
         error: ''
       }

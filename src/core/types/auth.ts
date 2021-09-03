@@ -12,3 +12,14 @@ export interface AuthResult {
   status: number
   statusText: string
 }
+
+export interface AuthPayload {
+  session: Session | null
+  loading: boolean
+  error: string
+}
+
+export interface IAuth {
+  type: string
+  payload?: AuthPayload
+}

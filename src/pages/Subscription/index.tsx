@@ -30,11 +30,12 @@ const Login: React.FC<LoginProps> = () => {
   const [notifytoken, setNotify] = useState('')
 
   useEffect(() => {
-    async function setv() {
-      let check = (await AppStorage.getItem('check')) === 'true' || false
-      setChecked(check)
+    // TODO: USE useStorage Hook
+    /* async function setv() {
+      let check: string = await AppStorage.getItem('check')
+      setChecked(check === 'true')
     }
-    setv()
+    setv() */
   }, [])
 
   const register = () => {

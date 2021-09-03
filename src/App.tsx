@@ -26,9 +26,9 @@ import './index.scss'
 import MainTabs from './components/MainTabs'
 import { Route, Redirect } from 'react-router'
 import { Menu } from './components/Menu'
+import { useDispatch } from 'react-redux'
 
-import { Provider } from 'react-redux'
-import { store } from './providers/redux'
+import { loadSession } from 'providers/redux/actions/auth'
 import VerifyVersion from 'components/CheckVersion'
 import { useEffect, useState } from 'react'
 
@@ -36,10 +36,12 @@ const versionAndroid = '1.0'
 const versionIos = '1.0'
 
 const App: React.FC = () => {
+  const dispatch = useDispatch()
   const [AlertIos, setAlertIos] = useState(false)
   const [AlertAndroid, setAlertAndroid] = useState(false)
 
   useEffect(() => {
+    dispatch(loadSession())
     VerifyVersion(setAlertIos, setAlertAndroid, versionAndroid, versionIos)
   }, [])
 
@@ -48,15 +50,13 @@ const App: React.FC = () => {
 
   return (
     <IonApp>
-      <Provider store={store}>
-        <IonReactRouter>
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/tabs" component={MainTabs} />
-            <Route exact path="/" render={() => <Redirect to="/tabs" />} />
-          </IonRouterOutlet>
-        </IonReactRouter>
-      </Provider>
+      <IonReactRouter>
+        <Menu />
+        <IonRouterOutlet id="main">
+          <Route path="/tabs" component={MainTabs} />
+          <Route exact path="/" render={() => <Redirect to="/tabs" />} />
+        </IonRouterOutlet>
+      </IonReactRouter>
     </IonApp>
   )
 }

@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux'
 import _get from 'lodash/get'
+
 import {
   AUTH_LOADING,
   AUTH_ERROR,
@@ -7,17 +8,16 @@ import {
   AUTH_LOGOUT
 } from 'providers/redux/types'
 
-import { AuthCredentials, AuthResult } from 'core/types/auth'
+import { SESSION_KEY } from 'core/constants'
+
+import { AuthCredentials, AuthResult, AuthPayload } from 'core/types/auth'
 import Auth from 'providers/api/auth'
 import { Session } from 'core/types/session'
-import { setInStorage } from 'hooks/useStorage'
-
-const SESSION_KEY = '_session_'
+import { setInStorage, getFromStorage } from 'hooks/useStorage'
 
 export const login = (data: AuthCredentials) => {
   return async (dispatch: Dispatch) => {
     try {
-      console.log('la data!', data)
       dispatch({ type: AUTH_LOADING })
       const authResult: AuthResult | null = await Auth.login(data)
       if (_get(authResult, 'status', 500) === 200) {
@@ -56,5 +56,25 @@ export const logout = async () => {
       payload: null
     })
     await setInStorage(SESSION_KEY, null)
+  }
+}
+
+export const loadSession = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const payload: AuthPayload = { session: null, loading: true, error: '' }
+      dispatch({ type: AUTH_LOADING, payload })
+      const session: any = await getFromStorage(SESSION_KEY, null)
+      console.log('la session!', session)
+      payload.loading = false
+      payload.error = ''
+      if (typeof session !== undefined) payload.session = session as Session
+
+      console.log('load session payload', payload)
+
+      dispatch({ type: AUTH_SUCCESS, payload })
+    } catch (error) {
+      dispatch({ type: AUTH_SUCCESS, payload: { session: null } })
+    }
   }
 }

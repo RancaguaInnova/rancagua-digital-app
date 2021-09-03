@@ -5,5 +5,3 @@ import { CapacitorStorage } from './capacitorStorage'
 export const AppStorage = Capacitor.isPluginAvailable('Storage')
   ? CapacitorStorage
   : WebStorage
-
-console.log('AppStorage', AppStorage)

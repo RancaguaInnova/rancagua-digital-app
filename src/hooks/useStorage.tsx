@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react'
 import { AppStorage } from 'providers/storage'
 
 export const getFromStorage = async (key: string, initialValue: any) => {
-  return async () => {
-    try {
-      const item: any = await AppStorage.getItem(key)
-      return typeof item === 'string' ? JSON.parse(item) : initialValue
-    } catch (e) {
-      console.log(e)
-      return initialValue
-    }
+  try {
+    const { value }: any = await AppStorage.getItem(key)
+    const item = typeof value === 'string' ? JSON.parse(value) : initialValue
+    return Promise.resolve(item)
+  } catch (e) {
+    console.log(e)
+    return Promise.resolve(initialValue)
   }
 }
 

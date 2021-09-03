@@ -4,6 +4,7 @@ import { tweetReducer } from './tweet'
 import { applicationReducer } from './application'
 import { eventReducer } from './event'
 
+
 //aca agregar todos los reducers
 export const mainReducer = combineReducers({
   auth: authReducer,
