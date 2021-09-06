@@ -2,13 +2,13 @@ import { FC } from 'react'
 import { Button } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { AuthCredentials } from 'core/types/auth'
-import { login, logout } from 'providers/redux/actions/auth'
+import { login } from 'providers/redux/actions/auth'
 
-import { LoginForm } from 'components/Forms/LoginForm'
+import { PersonalInfoForm } from 'components/Forms/PersonalInfoForm'
 
 import { Container, LoginFormContainer, LogoutContainer, Title } from './styles'
 
-export const LoginBox: FC = () => {
+export const PersonalInfoBox: FC = () => {
   const dispatch = useDispatch()
   const { error, loading, session } = useSelector((state: any) => state.auth)
 
@@ -16,24 +16,21 @@ export const LoginBox: FC = () => {
     dispatch(login(data))
   }
 
-  const onLogout = () => {
-    dispatch(logout())
-  }
-
   return (
     <Container>
+      AQUI EL REGISTRO DE USUARIO
       {/* WITHOUT SESSION */}
-      {!session &&
+      {/* {!session &&
         <LoginFormContainer>
           <Title>Iniciar Session</Title>
           <LoginForm onSubmit={onSubmit} loading={loading} error={error} />
         </LoginFormContainer>}
-      {/* WITH SESSION */}
       {session &&
         <LogoutContainer>
           <Title> Hola NOMBRE </Title>
-          <Button onClick={onLogout}>CERRAR SESION</Button>
-        </LogoutContainer>}
+          <Button>CERRAR SESION</Button>
+        </LogoutContainer>}{' '}
+      */}
     </Container>
   )
 }

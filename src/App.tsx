@@ -23,7 +23,7 @@ import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
 /* Theme variables */
 import './theme/theme.scss'
 import './index.scss'
-import MainTabs from './components/MainTabs'
+import Routes from './app-routes'
 import { Route, Redirect } from 'react-router'
 import { Menu } from './components/Menu'
 import { useDispatch } from 'react-redux'
@@ -53,7 +53,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <Menu />
         <IonRouterOutlet id="main">
-          <Route path="/tabs" component={MainTabs} />
+          <Route path="/tabs" component={Routes} />
           <Route exact path="/" render={() => <Redirect to="/tabs" />} />
         </IonRouterOutlet>
       </IonReactRouter>

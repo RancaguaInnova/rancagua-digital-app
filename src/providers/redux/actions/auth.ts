@@ -49,7 +49,7 @@ export const login = (data: AuthCredentials) => {
   }
 }
 
-export const logout = async () => {
+export const logout = () => {
   return async (dispatch: Dispatch) => {
     dispatch({
       type: AUTH_LOGOUT,
