@@ -22,7 +22,7 @@ export const PersonalInfoBox: FC = () => {
   return (
     <Container>
       <>
-        <Title>Información personal</Title>
+        {/* <Title>Información personal</Title> */}
         <PersonalInfoForm
           onSubmit={onSubmit}
           onChangeIdentification={onChangeIdentification}

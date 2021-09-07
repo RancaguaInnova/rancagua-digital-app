@@ -1,8 +1,15 @@
 import { FC } from 'react'
 import { Form, Input, Button, Row, Col } from 'antd'
 import { PasswordForm } from 'components/Forms/PasswordForm'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import { CustomCol, Error } from './styles'
+import { ContactInformationForm } from 'components/Forms/ContactInformationForm'
+import { IdentificationForm } from 'components/Forms/IdentificationForm'
+import {
+  MailOutlined,
+  IdcardOutlined,
+  UserOutlined,
+  CalendarOutlined
+} from '@ant-design/icons'
+import { Subtitle } from './styles'
 
 interface PersonalInfoFormProps {
   onSubmit: any
@@ -16,7 +23,8 @@ export const PersonalInfoForm: FC<PersonalInfoFormProps> = ({
   onSubmit,
   loading = false,
   error = '',
-  profile = null
+  profile = null,
+  onChangeIdentification = () => {}
 }) => {
   const [form] = Form.useForm()
 
@@ -33,21 +41,38 @@ export const PersonalInfoForm: FC<PersonalInfoFormProps> = ({
       onFinish={onSubmit}
       scrollToFirstError
     >
+      <Subtitle>Información Personal</Subtitle>
       <Form.Item
-        name='identification'
+        name='name'
         rules={[
           {
             required: true,
-            message: 'Por favor ingrese su RUT'
+            message: 'Por favor ingrese su Nombre'
           }
         ]}
       >
         <Input
-          prefix={<UserOutlined className='site-form-item-icon' />}
-          placeholder='Ingrese su RUT'
+          prefix={<IdcardOutlined />}
+          placeholder='Ingrese su Nombre'
           bordered={false}
         />
       </Form.Item>
+      <Form.Item
+        name='lastName'
+        rules={[
+          {
+            required: true,
+            message: 'Por favor ingrese su Apellido'
+          }
+        ]}
+      >
+        <Input
+          prefix={<IdcardOutlined />}
+          placeholder='Ingrese su Apellido'
+          bordered={false}
+        />
+      </Form.Item>
+      <IdentificationForm onChange={onChangeIdentification} />
 
       <Form.Item
         name='email'
@@ -59,14 +84,30 @@ export const PersonalInfoForm: FC<PersonalInfoFormProps> = ({
         ]}
       >
         <Input
-          prefix={<UserOutlined className='site-form-item-icon' />}
+          prefix={<MailOutlined />}
           placeholder='Ingrese su email'
           bordered={false}
         />
       </Form.Item>
 
-      <PasswordForm onChange={onChangePassword} />
+      <Form.Item name='birthDate'>
+        <Input
+          prefix={<CalendarOutlined />}
+          placeholder='Ingrese su Fecha de Nacimiento'
+          bordered={false}
+        />
+      </Form.Item>
+      <Form.Item name='gender'>
+        <Input
+          prefix={<UserOutlined />}
+          placeholder='Género'
+          bordered={false}
+        />
+      </Form.Item>
 
+      <ContactInformationForm showTitle />
+
+      <PasswordForm onChange={onChangePassword} showTitle />
       <Form.Item>
         <Row justify='center'>
           <Col span='8' md='4' lg='4'>
