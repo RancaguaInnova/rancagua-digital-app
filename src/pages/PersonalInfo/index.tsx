@@ -9,12 +9,11 @@ interface PersonalInfoProps {}
 const PersonalInfo: React.FC<PersonalInfoProps> = () => {
   return (
     <IonPage>
-      <Header title="Iniciar sesión de Rancagua Digital" />
+      <Header title="Mi Perfil" />
       <IonContent>
         <Row justify="center">
           <Col md={12} xs={20}>
-            información personal
-            {/* <PersonalInfoBox /> */}
+            <PersonalInfoBox />
           </Col>
         </Row>
       </IonContent>

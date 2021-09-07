@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Form, Input, Checkbox, Button, Row, Col } from 'antd'
+import { Link } from 'react-router-dom'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { CustomCol, CustomDivider, Error } from './styles'
 
@@ -84,7 +85,7 @@ export const LoginForm: FC<LoginFormProps> = ({
             </Error>
           </CustomCol>}
         <CustomCol span="24">
-          <a href="">Crear una cuenta</a>
+          <Link to="/tabs/profile">Crear una cuenta</Link>
         </CustomCol>
         <CustomCol span="24">
           <a href="">Olvide mi contraseña</a>

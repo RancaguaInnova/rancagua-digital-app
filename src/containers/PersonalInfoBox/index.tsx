@@ -16,21 +16,19 @@ export const PersonalInfoBox: FC = () => {
     dispatch(login(data))
   }
 
+  const onChangeIdentification = (identification: string) => {
+    console.log('on change rut', identification)
+  }
   return (
     <Container>
-      AQUI EL REGISTRO DE USUARIO
-      {/* WITHOUT SESSION */}
-      {/* {!session &&
-        <LoginFormContainer>
-          <Title>Iniciar Session</Title>
-          <LoginForm onSubmit={onSubmit} loading={loading} error={error} />
-        </LoginFormContainer>}
-      {session &&
-        <LogoutContainer>
-          <Title> Hola NOMBRE </Title>
-          <Button>CERRAR SESION</Button>
-        </LogoutContainer>}{' '}
-      */}
+      <>
+        <Title>Información personal</Title>
+        <PersonalInfoForm
+          onSubmit={onSubmit}
+          onChangeIdentification={onChangeIdentification}
+          profile={null}
+        />
+      </>
     </Container>
   )
 }
