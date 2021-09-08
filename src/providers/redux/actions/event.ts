@@ -13,6 +13,7 @@ export const GetListEvents = (date:string) => {
       let events: Event[] = [];
       const { data, status } = await axios.get(`/city/events/app/list?date=${date}&limit=10`);
       if (status === 200) {
+        console.log(data)
         events = data;
         dispach(eventList(events));
       } else {

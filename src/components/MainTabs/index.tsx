@@ -18,6 +18,7 @@ import InformationPage from "pages/Information"
 import LoginPage from "pages/Login"
 import SubscriptionPage from "pages/Subscription"
 import AppViewPage from "pages/AppView"
+import EventDetailPage from "pages/Calendar/EventDetail.tsx"
 
 export const IonTabBarStyled = styled(IonTabBar)`
   background-color: rgba(255, 255, 255, 0.15);
@@ -45,6 +46,8 @@ const MainTabs: FC = ({}) => {
     <IonTabs>
       <IonRouterOutlet>
         <Route path="/tabs" render={() => <Redirect to="/tabs/home" />} exact />
+        <Route path="/tabs/:tab(eventDetail)" render={() =><EventDetailPage  /> }/>
+
         <Route path="/tabs/:tab(home)" render={() => <HomePage />} />
         <Route path="/tabs/:tab(calendar)" render={() => <CalendarPage />} />
         <Route path="/tabs/:tab(services)" render={() => <ServicesPage />} />

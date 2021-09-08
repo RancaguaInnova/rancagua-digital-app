@@ -1,31 +1,18 @@
-import { FC } from 'react'
-import { List, Avatar } from 'antd'
-import { Application } from 'core/interfaces/applications'
-import { ArrowRightOutlined } from '@ant-design/icons'
-import { CustomItem } from './styles'
-import { useHistory } from 'react-router-dom'
-import openCapacitorSite from 'components/openCapacitorBrowser'
+import { FC } from "react";
+import { List, Avatar } from "antd";
+import { Application } from "core/interfaces/applications";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { CustomItem } from "./styles";
+import { useHistory } from "react-router-dom";
+import { openApp } from "./functions"; 
 
 interface ServiceItemProps {
-  application: Application
+  application: Application;
 }
-
 const ServiceItem: FC<ServiceItemProps> = ({ application }) => {
-  const history = useHistory()
-
-  const openApp = (application: Application) => {
-    console.log('Application', application)
-    if (application.internalApp) {
-      history.push({
-        pathname: `/tabs/appView`,
-        state: { app: application }
-      })
-    } else {
-      openCapacitorSite(application.applicationURL || '')
-    }
-  }
+  const history = useHistory();
   return (
-    <CustomItem onClick={() => openApp(application)}>
+    <CustomItem onClick={() => openApp(application, history)}>
       <List.Item.Meta
         title={`${application.name}`}
         description={application.description}
@@ -33,6 +20,6 @@ const ServiceItem: FC<ServiceItemProps> = ({ application }) => {
       />
       <ArrowRightOutlined />
     </CustomItem>
-  )
-}
-export default ServiceItem
+  );
+};
+export default ServiceItem;

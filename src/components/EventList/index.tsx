@@ -2,7 +2,7 @@ import { Moment } from 'moment'
 import { FC, useEffect } from 'react'
 import { Event } from 'core/interfaces/event'
 import EventCard from '../EventCard'
-import { DivStyled } from './styles'
+import { DivStyled,TextStyled } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetListEvents } from 'providers/redux/actions/event'
 
@@ -18,7 +18,6 @@ const EventList: FC<EventListProps> = ({
   date,
   title = 'Próximos eventos'
 }) => {
-  console.log('soy la fecha seleccionada', date.format('DD-MM-YYYY'))
 
 
   const dispatch = useDispatch()
@@ -45,6 +44,10 @@ const EventList: FC<EventListProps> = ({
       {listado && listado.length > 0 && listado.map((item, index) => {
         return <EventCard key={index} event={item} />
       })}
+
+      {listado && listado.length===0 && (
+         <DivStyled> <TextStyled type="danger">No se encontraron eventos proximamente</TextStyled>  </DivStyled>
+      )}
     </div>
   )
 }

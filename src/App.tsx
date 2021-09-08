@@ -16,7 +16,6 @@ import '@ionic/react/css/text-alignment.css'
 import '@ionic/react/css/text-transformation.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
-import { isPlatform } from '@ionic/react'
 
 import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
 
