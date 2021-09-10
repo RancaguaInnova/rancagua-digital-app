@@ -5,15 +5,19 @@ import { ArrowRightOutlined } from "@ant-design/icons"
 import moment from "moment"
 import { ItemStyled, SpanStyled } from "./styles"
 import { useHistory } from "react-router"
+import { setInStorage, getFromStorage } from "hooks/useStorage";
 
 interface EventCardProps {
   event: Event
 }
 
-const goEvent=(id:string, history:any)=>{
+const goEvent=async (event: Event, history:any)=>{
+console.log("set event",event)
+ let e= await setInStorage("event",event)
+ console.log("set in storage",e)
   history.push({
     pathname: `/tabs/eventDetail`,
-    id: id,
+    
   });
 }
 
@@ -33,13 +37,13 @@ const EventCard: FC<EventCardProps> = ({ event }) => {
   const history =useHistory();
   
   return (
-    <ItemStyled>
+    <ItemStyled onClick={()=>goEvent(event,history)}>
       <List.Item.Meta
         title={` ${event.name}`}
         description={<Description event={event}></Description>}
         avatar={<Avatar src="/assets/icon/teatro.png" />}
       ></List.Item.Meta>
-      <ArrowRightOutlined onClick={()=>goEvent(event._id,history)} />
+      <ArrowRightOutlined />
     </ItemStyled>
   )
 }
