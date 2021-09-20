@@ -4,22 +4,22 @@ import { IEvent } from 'core/types/event'
 
 interface IEventState {
   event?: Event
-  tweetList: Event[]
+  eventList: Event[]
 }
 
 const initialState: IEventState = {
-  tweetList: []
+  eventList: []
 }
 
 export const eventReducer = (state = initialState, action: IEvent) => {
   switch (action.type) {
     case types.GET_EVENT:
       return {
-        tweet: action.payload.event
+        event: action.payload.event
       }
     case types.GET_LIST_EVENTS:
       return {
-        tweets: action.payload.eventList || []
+        events: action.payload.eventList || []
       }
 
     default:
