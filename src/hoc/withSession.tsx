@@ -16,8 +16,8 @@ const PROFILE_PROVIDER = {
 
 //const getRole = (session) => _get(session, 'user.role', 'visit')
 
-export const withSession = (WrappedComponent) => {
-  const Component = (props) => {
+export const withSession = (WrappedComponent: any) => {
+  const Component = (props: any) => {
     /*  const { session, setSession, removeSession } = useContext(AuthContext)
     const [provider, setProvider] = useState(PROFILE_PROVIDER[getRole(session)])
 
@@ -31,16 +31,21 @@ export const withSession = (WrappedComponent) => {
     } */
 
     return (
-      <div>
-        hola
-        {/* <WrappedComponent
-        {...props}
-        session={session}
-        setSession={setSession}
-        removeSession={removeSession}
-        getProfile={getProfile}
-      /> */}
-      </div>
+      <>
+        <WrappedComponent
+          {...props}
+          session={null}
+          setSession={(session: any) => {
+            // here set session
+          }}
+          removeSession={(session: any) => {
+            // here remove session
+          }}
+          getProfile={() => {
+            // here get session profile
+          }}
+        />
+      </>
     )
   }
 
