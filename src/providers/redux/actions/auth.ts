@@ -49,6 +49,15 @@ export const login = (data: AuthCredentials) => {
   }
 }
 
+export const setSessionData = (data: Session) => {
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: AUTH_SUCCESS,
+      payload: { session: data }
+    })
+  }
+}
+
 export const logout = () => {
   return async (dispatch: Dispatch) => {
     dispatch({
