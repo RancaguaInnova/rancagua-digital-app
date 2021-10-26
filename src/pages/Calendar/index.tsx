@@ -21,7 +21,7 @@ const CalendarPage: React.FC = () => {
         <Row justify="center">
           <Col xs={24} sm={22} md={18} lg={12}>
             <Calendar
-              dateCellRender={dateCellRender}
+              dateCellRender={(d)=>dateCellRender(d,'hola')}
               // monthCellRender={monthCellRender}
               onSelect={onSelect}
               locale={locale}
