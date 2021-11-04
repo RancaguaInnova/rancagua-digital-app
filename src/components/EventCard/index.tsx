@@ -25,7 +25,7 @@ const Description: FC<EventCardProps> = ({ event }) => {
   return (
     <>
       <SpanStyled className="dateEvent">
-        {moment(event.date).format("DD-MM-YYYY")} {event.time? event.time:''}
+        {moment(event.date).format("DD-MM-YYYY")}  {event?.time!=="Invalid date" ? event.time:''}
       </SpanStyled>
       <br></br>
       <span> {event.description}</span>
