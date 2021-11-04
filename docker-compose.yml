@@ -1,6 +1,6 @@
 version: '3'
 services: 
-    rancagua-digital-app:
+    app:
       build: .
       environment:
            CHOKIDAR_USEPOLLING: "true"
@@ -9,5 +9,5 @@ services:
       ports:
           - "3000:3000"
       volumes:
-          - "/rancagua-digital-app/node_modules"
-          - ".:/rancagua-digital-app"    
+          - "/app/node_modules"
+          - ".:/app"    

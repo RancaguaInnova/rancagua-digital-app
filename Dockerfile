@@ -1,8 +1,8 @@
 FROM node:14-alpine
 RUN apk add g++ make python
-WORKDIR /rancagua-digital-app
+WORKDIR /app
 RUN npm install -g @ionic/cli
 COPY package.json ./
-RUN npm install
+RUN npm i --silent
 EXPOSE 3000
 CMD ["npm","start"]
