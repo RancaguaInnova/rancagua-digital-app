@@ -34,7 +34,7 @@
     "@types/styled-components": "^5.1.10",
     "@types/url-safe-base64": "^1.1.0",
     "antd": "^4.16.3",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "convert-vapid-public-key": "^1.0.2",
     "html-react-parser": "^1.2.6",
     "ionic-appauth": "^0.7.4",
