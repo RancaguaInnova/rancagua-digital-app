@@ -1,8 +1,10 @@
 import { Calendar, Badge } from "antd"
 import "./styles.scss"
 
-function getListData(value: { date: () => any }) {
+function getListData(value: { date: () => any },listado:any) {
   let listData
+  console.log("d",listado)
+  console.log("value date",value.date())
   switch (value.date()) {
     case 8:
       listData = [
@@ -32,8 +34,8 @@ function getListData(value: { date: () => any }) {
   return listData || []
 }
 
-function dateCellRender(value: any) {
-  const listData = getListData(value)
+function dateCellRender(value: any,listado:any) {
+  const listData = getListData(value,listado)
   return (
     <>
       {listData.map((item: any) => (

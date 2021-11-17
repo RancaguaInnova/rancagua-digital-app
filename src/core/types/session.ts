@@ -15,4 +15,5 @@ export interface Session {
     expiresAt: any
     userToken: string
   }
+  userToken: string
 }

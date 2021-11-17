@@ -11,9 +11,19 @@ import { ImCalendar, ImRoad } from "react-icons/im";
 import moment from "moment";
 import { FaExternalLinkAlt, FaWaze } from "react-icons/fa";
 import { Geolocation } from "@capacitor/geolocation";
+import { withSession } from "hoc/withSession";
+import { Session } from "core/types/session";
 
-const EventDetail: FC = () => {
+interface EventDetailProps {
+session: Session;
+}
+const EventDetail: FC<EventDetailProps> = ({session}) => {
   const { Text, Title, Link } = Typography;
+
+
+
+
+
 
   const [Evento, setEvento] = useState(null);
   const [latitude, setLatitude] = useState<number | null>(null);
@@ -49,6 +59,11 @@ const EventDetail: FC = () => {
   };
 
   console.log("url", _get(Evento, "externalUrl", null));
+  const userToken=session?.userToken || ""
+
+  const url= _get(Evento, "externalUrl", null)+"&token="+userToken
+  console.log("url", url);
+
   return (
     <>
       {Evento && (
@@ -85,7 +100,7 @@ const EventDetail: FC = () => {
           {_get(Evento, "externalUrl", null) && (
             <p>
               <FaExternalLinkAlt></FaExternalLinkAlt>{" "}
-              <Link href={_get(Evento, "externalUrl", "")} target="_blank">
+              <Link href={url} target="_blank">
                 Ver mas
               </Link>
             </p>
@@ -110,4 +125,4 @@ const EventDetail: FC = () => {
     </>
   );
 };
-export default EventDetail;
+export default withSession(EventDetail);
