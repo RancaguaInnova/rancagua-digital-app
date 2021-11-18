@@ -5,7 +5,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonIcon,
-  IonLabel
+  IonLabel,
 } from '@ionic/react'
 import { home, calendar, cube, information } from 'ionicons/icons'
 import { Route, Redirect } from 'react-router'
@@ -16,17 +16,17 @@ import ServicesPage from 'pages/Services'
 import CalendarPage from 'pages/Calendar'
 import InformationPage from 'pages/Information'
 import LoginPage from 'pages/Login'
-import PersonalInfoPage from 'pages/PersonalInfo'
 import SubscriptionPage from 'pages/Subscription'
+import ProfilePage from 'pages/Profile'
 import AppViewPage from 'pages/AppView'
 import EventDetailPage from 'pages/Calendar/EventDetail'
 export const IonTabBarStyled = styled(IonTabBar)`
   background-color: rgba(255, 255, 255, 0.15);
 `
 
-const Routes: FC = ({}) => {
+const Routes: FC = () => {
   const [mQuery, setMQuery] = React.useState<any>({
-    matches: window.innerWidth > 768 ? true : false
+    matches: window.innerWidth > 768 ? true : false,
   })
 
   useEffect(() => {
@@ -53,11 +53,11 @@ const Routes: FC = ({}) => {
         <Route path='/tabs/:tab(home)' render={() => <HomePage />} />
         <Route path='/tabs/:tab(calendar)' render={() => <CalendarPage />} />
         <Route path='/tabs/:tab(services)' render={() => <ServicesPage />} />
+        <Route path='/tabs/:tab(profile)' render={() => <ProfilePage />} />
         <Route
           path='/tabs/:tab(information)'
           render={() => <InformationPage />}
         />
-        <Route path='/tabs/:tab(profile)' render={() => <PersonalInfoPage />} />
         <Route path='/tabs/:tab(login)' render={() => <LoginPage />} />
         <Route
           path='/tabs/:tab(subscription)'

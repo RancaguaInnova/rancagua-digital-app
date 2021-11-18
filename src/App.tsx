@@ -24,7 +24,7 @@ import './theme/theme.scss'
 import './index.scss'
 import Routes from './app-routes'
 import { Route, Redirect } from 'react-router'
-import { Menu } from './components/Menu'
+import { MenuBox } from './containers/MenuBox'
 import { useDispatch } from 'react-redux'
 
 import { loadSession } from 'providers/redux/actions/auth'
@@ -50,10 +50,10 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <Menu />
-        <IonRouterOutlet id="main">
-          <Route path="/tabs" component={Routes} />
-          <Route exact path="/" render={() => <Redirect to="/tabs" />} />
+        <MenuBox />
+        <IonRouterOutlet id='main'>
+          <Route path='/tabs' component={Routes} />
+          <Route exact path='/' render={() => <Redirect to='/tabs' />} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
