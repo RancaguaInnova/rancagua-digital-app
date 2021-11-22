@@ -1,8 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Banner } from "core/interfaces/banner";
+import { GetListBanners } from "providers/redux/actions/banner";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, HashRouter } from "react-router-dom";
 import { CarouselStyled } from "./styles";
 
-const Banner = () => {
+const BannerHeader = () => {
+  const dispatch = useDispatch();
+  const { banners } = useSelector((state: any) => state.banner);
+  const listado: Banner[] = banners || [];
+
+  useEffect(() => {
+    const timer = setTimeout(() => dispatch(GetListBanners()), 10000);
+    return () => clearTimeout(timer);
+  });
+
+  useEffect(() => {
+    dispatch(GetListBanners());
+
+    return () => {};
+  }, [dispatch]);
+
   const props = {
     dots: true,
     infinite: true,
@@ -10,15 +28,14 @@ const Banner = () => {
   };
   return (
     <CarouselStyled autoplay {...props}>
-      <div>
-        <Link to="/tabs/services">
-          <img
-            alt=""
-            src="https://firebasestorage.googleapis.com/v0/b/cdir-tickets.appspot.com/o/banner%2Fbanner.png?alt=media&token=8eec2c79-e71b-4dba-9044-819f7ad93b77"
-          />
-        </Link>
-      </div>
+      {listado.map((banner: Banner) => (
+        <div key={banner.id}>
+          <a href={banner.targetUrl} target={"_blank"}>
+            <img src={banner.imageUrl} alt={""} width={"100%"} />
+          </a>
+        </div>
+      ))}
     </CarouselStyled>
   );
 };
-export default Banner;
+export default BannerHeader;
