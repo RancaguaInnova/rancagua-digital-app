@@ -9,6 +9,8 @@ import {
   IonItem,
   IonLabel,
   IonIcon,
+  IonBackButton,
+  IonButtons
 } from '@ionic/react'
 import {
   calendar,
@@ -17,7 +19,7 @@ import {
   information,
   logIn,
   notifications,
-  person,
+  person
 } from 'ionicons/icons'
 import React from 'react'
 

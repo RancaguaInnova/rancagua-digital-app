@@ -2,12 +2,14 @@ import {
   IonButton,
   IonButtons,
   IonHeader,
+  IonContent,
   IonMenuButton,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonBackButton
 } from '@ionic/react'
 import React, { FC, useEffect } from 'react'
-import TitleStyled from '../Title'
+import Title from 'components/Title'
 import './styles.scss'
 import { useHistory } from 'react-router-dom'
 import { IoIosArrowBack } from 'react-icons/io'
@@ -37,6 +39,16 @@ const Header: FC<HeaderProps> = ({ title, back = false }) => {
   return (
     <IonHeader className='header'>
       <IonToolbar className='header'>
+        <IonButtons slot='start'>
+          <span className='back' onClick={() => history.goBack()}>
+            <IoIosArrowBack></IoIosArrowBack>
+          </span>
+        </IonButtons>
+        <IonButtons>
+          <IonTitle>
+            <img src='/assets/Rancagua-Blanco.png' height='35' alt='Logo'></img>
+          </IonTitle>
+        </IonButtons>
         <IonButtons slot='end'>
           {mQuery && !mQuery.matches ? (
             <IonMenuButton />
@@ -54,20 +66,9 @@ const Header: FC<HeaderProps> = ({ title, back = false }) => {
 
               <IonButton routerLink={'/tabs/login'}>Login</IonButton>
             </>
-          )}{' '}
+          )}
         </IonButtons>
-        <IonTitle>
-          <img src='/assets/Rancagua-Blanco.png' height='35' alt='Logo'></img>
-        </IonTitle>
-      </IonToolbar>{' '}
-      <TitleStyled level={3}>
-        {back && (
-          <span className='back' onClick={() => history.goBack()}>
-            <IoIosArrowBack></IoIosArrowBack>
-          </span>
-        )}
-        {title}
-      </TitleStyled>
+      </IonToolbar>
     </IonHeader>
   )
 }

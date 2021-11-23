@@ -1,12 +1,12 @@
-@import "../../theme/variables";
+@import '../../theme/variables';
 
 .header {
   background: $primaryColor;
-  color: white;
+  color: #fff;
 }
 
-.back{
-  color: #000000;
-  position:absolute;
+.back {
+  color: #fff;
+  font-size: 1.4rem;
   left: 5px;
 }
