@@ -5,7 +5,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonIcon,
-  IonLabel,
+  IonLabel
 } from '@ionic/react'
 import { home, calendar, cube, information } from 'ionicons/icons'
 import { Route, Redirect } from 'react-router'
@@ -26,7 +26,7 @@ export const IonTabBarStyled = styled(IonTabBar)`
 
 const Routes: FC = () => {
   const [mQuery, setMQuery] = React.useState<any>({
-    matches: window.innerWidth > 768 ? true : false,
+    matches: window.innerWidth > 768 ? true : false
   })
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const Routes: FC = () => {
           </IonTabButton>
           <IonTabButton tab='information' href='/tabs/information'>
             <IonIcon icon={information} />
-            <IonLabel>Información</IonLabel>
+            <IonLabel>Informaciones</IonLabel>
           </IonTabButton>
         </IonTabBar>
       ) : (

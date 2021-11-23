@@ -1,15 +1,15 @@
-import { FC } from "react"
-import { Tweet } from "core/interfaces/tweet"
-import Linkify from "react-linkify"
-import { Card } from "antd"
-import styled from "styled-components"
-import moment from "moment"
-import "./styles.scss"
-import { Browser } from "@capacitor/browser"
-import openCapacitorSite from "components/openCapacitorBrowser"
-import { FaBookReader } from "react-icons/fa"
-const idLocale = require("moment/locale/es")
-moment.updateLocale("es", idLocale)
+import { FC } from 'react'
+import { Tweet } from 'core/interfaces/tweet'
+import Linkify from 'react-linkify'
+import { Card } from 'antd'
+import styled from 'styled-components'
+import moment from 'moment'
+import './styles.scss'
+import { Browser } from '@capacitor/browser'
+import openCapacitorSite from 'components/openCapacitorBrowser'
+import { FaBookReader } from 'react-icons/fa'
+const idLocale = require('moment/locale/es')
+moment.updateLocale('es', idLocale)
 export const CardStyled = styled(Card)`
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
@@ -31,9 +31,9 @@ interface NewsCardProps {
 const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
   const { Meta } = Card
   const openApp = (url: string) => {
-    console.log("url", url)
+    console.log('url', url)
 
-    openCapacitorSite(url || "")
+    openCapacitorSite(url || '')
   }
 
   return (
@@ -43,26 +43,26 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
         cover={
           tweet.attachments?.media_keys[0]?.url ? (
             <img
-              className="card-img-top"
-              src={tweet.attachments?.media_keys[0]?.url || ""}
-              alt=""
+              className='card-img-top'
+              src={tweet.attachments?.media_keys[0]?.url || ''}
+              alt=''
             />
           ) : (
-            tweet.attachments?.media_keys[0]?.type === "video" && (
+            tweet.attachments?.media_keys[0]?.type === 'video' && (
               <img
-                className="card-img-top"
-                src={tweet.attachments?.media_keys[0]?.preview_image_url || ""}
-                alt=""
+                className='card-img-top'
+                src={tweet.attachments?.media_keys[0]?.preview_image_url || ''}
+                alt=''
               />
             )
           )
         }
       >
-        <h5>@munirancagua</h5>
+        {/*  <h5>@munirancagua</h5> */}
         <Linkify
           componentDecorator={(decoratedHref, decoratedText, key) => (
             <p key={key}>
-              {" "}
+              {' '}
               <a onClick={() => openApp(decoratedHref)}>
                 <FaBookReader></FaBookReader> &nbsp; {decoratedText}
               </a>
@@ -72,7 +72,7 @@ const NewsCard: FC<NewsCardProps> = ({ tweet }) => {
           {tweet.text}
         </Linkify>
         <p></p>
-        <Meta title="" description={moment(tweet.created_at).fromNow()} />
+        <Meta title='' description={moment(tweet.created_at).fromNow()} />
       </CardStyled>
     </>
   )

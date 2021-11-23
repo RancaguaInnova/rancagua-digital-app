@@ -14,11 +14,11 @@ import './styles.scss'
 import { useHistory } from 'react-router-dom'
 import { IoIosArrowBack } from 'react-icons/io'
 interface HeaderProps {
-  title: string
+  title?: string
   back?: boolean
 }
 
-const Header: FC<HeaderProps> = ({ title, back = false }) => {
+const Header: FC<HeaderProps> = ({ title = '', back = false }) => {
   const history = useHistory()
 
   const [mQuery, setMQuery] = React.useState<any>({
@@ -58,7 +58,7 @@ const Header: FC<HeaderProps> = ({ title, back = false }) => {
               <IonButton routerLink={'/tabs/calendar'}>Calendario </IonButton>
               <IonButton routerLink={'/tabs/services'}>Servicios</IonButton>
               <IonButton routerLink={'/tabs/information'}>
-                Información
+                Informaciones
               </IonButton>
               <IonButton routerLink={'/tabs/subscription'}>
                 Suscripción

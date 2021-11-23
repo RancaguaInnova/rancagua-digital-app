@@ -17,19 +17,19 @@ const ServicesPage: React.FC = () => {
     ? applications
     : dispatch(GetListApplications())
 
-  useEffect(
-    () => {
-      dispatch(GetListApplications())
-      console.log('me vuelvo a ejecutar')
-      return () => {}
-    },
-    [dispatch]
-  )
+  useEffect(() => {
+    dispatch(GetListApplications())
+    console.log('me vuelvo a ejecutar')
+    return () => {}
+  }, [dispatch])
   return (
     <IonPage>
-      <Header title="Servicios Disponibles" />
+      <Header />
 
       <IonContent fullscreen>
+        <Row justify='center'>
+          <h3 className='subtitle'>Servicios Online</h3>
+        </Row>
         <Row>
           {listado &&
             listado.length > 0 &&

@@ -15,14 +15,16 @@ const CalendarPage: React.FC = () => {
   }
   return (
     <IonPage>
-      <Header title="Calendario de Eventos" />
+      <Header />
 
       <IonContent fullscreen>
-        <Row justify="center">
+        <Row justify='center'>
+          <h3 className='subtitle'>Calendario de Eventos</h3>
+        </Row>
+        <Row justify='center'>
           <Col xs={24} sm={22} md={18} lg={12}>
             <Calendar
-              dateCellRender={(d)=>dateCellRender(d,'hola')}
-              // monthCellRender={monthCellRender}
+              dateCellRender={(d) => dateCellRender(d, 'hola')}
               onSelect={onSelect}
               locale={locale}
             />
