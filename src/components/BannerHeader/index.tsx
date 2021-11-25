@@ -2,7 +2,6 @@ import { Banner } from "core/interfaces/banner";
 import { GetListBanners } from "providers/redux/actions/banner";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, HashRouter } from "react-router-dom";
 import { CarouselStyled } from "./styles";
 
 const BannerHeader = () => {

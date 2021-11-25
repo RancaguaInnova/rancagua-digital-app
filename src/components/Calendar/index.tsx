@@ -1,64 +1,54 @@
-import { Calendar, Badge } from "antd"
-import "./styles.scss"
+import { Calendar, Badge } from "antd";
+import { Event } from "core/interfaces/event";
+import moment from "moment";
+import "./styles.scss";
 
-function getListData(value: { date: () => any },listado:any) {
-  let listData
-  console.log("d",listado)
-  console.log("value date",value.date())
-  switch (value.date()) {
-    case 8:
-      listData = [
-        { type: "warning", content: "This is warning event." },
-        { type: "success", content: "This is usual event." },
-      ]
-      break
-    case 10:
-      listData = [
-        { type: "warning", content: "This is warning event." },
-        { type: "success", content: "This is usual event." },
-        { type: "error", content: "This is error event." },
-      ]
-      break
-    case 15:
-      listData = [
-        { type: "warning", content: "This is warning event" },
-        { type: "success", content: "This is very long usual event。。...." },
-        { type: "error", content: "This is error event 1." },
-        { type: "error", content: "This is error event 2." },
-        { type: "error", content: "This is error event 3." },
-        { type: "error", content: "This is error event 4." },
-      ]
-      break
-    default:
-  }
-  return listData || []
+interface IEventData {
+  type: string;
+  content: string;
+  id: string;
 }
 
-function dateCellRender(value: any,listado:any) {
-  const listData = getListData(value,listado)
+function getListData(value: any, listado: Event[]) {
+  let listData: IEventData[] = [];
+
+  let filtrado = listado.filter((item: Event) => {
+    let date = moment(item.date);
+    return date.format("YYYY-MM-DD") === value.format("YYYY-MM-DD");
+  });
+
+  filtrado.forEach((item: Event) => {
+    listData.push({ content: item.name, type: "success", id: item._id });
+  });
+
+  return listData;
+}
+
+function dateCellRender(value: any, listado: Event[]) {
+  const listData = getListData(value, listado);
   return (
     <>
       {listData.map((item: any) => (
-        <Badge key={item.content} status={item.type} />
+        <Badge status={item.type} key={item.id} />
       ))}
     </>
-  )
+  );
 }
 
 function getMonthData(value: { month: () => number }) {
   if (value.month() === 8) {
-    return 1394
+    return 1394;
   }
 }
 
 function monthCellRender(value: any) {
-  const num = getMonthData(value)
+  const num = getMonthData(value);
   return num ? (
     <div className="notes-month">
       <section>{num}</section>
       <span>Backlog number</span>
     </div>
-  ) : null
+  ) : null;
 }
 
-export { monthCellRender, dateCellRender }
+export { monthCellRender, dateCellRender };
