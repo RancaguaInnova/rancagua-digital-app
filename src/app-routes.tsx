@@ -9,6 +9,8 @@ import {
 } from '@ionic/react'
 import { home, calendar, cube, information } from 'ionicons/icons'
 import { Route, Redirect } from 'react-router'
+import { useLocation } from 'react-router-dom'
+
 import styled from 'styled-components'
 
 import HomePage from 'pages/Home'
@@ -24,10 +26,15 @@ export const IonTabBarStyled = styled(IonTabBar)`
   background-color: rgba(255, 255, 255, 0.15);
 `
 
+const DISABLE_TABS_IN_PATHS = ['/tabs/profile']
+
 const Routes: FC = () => {
+  const location = useLocation()
   const [mQuery, setMQuery] = React.useState<any>({
     matches: window.innerWidth > 768 ? true : false
   })
+
+  console.log('location', location)
 
   useEffect(() => {
     let mediaQuery = window.matchMedia('(min-width: 768px)')
@@ -42,6 +49,8 @@ const Routes: FC = () => {
       })
   }, [])
 
+  const showTabs = DISABLE_TABS_IN_PATHS.indexOf(location.pathname) === -1
+  console.log('showTabs', showTabs)
   return (
     <IonTabs>
       <IonRouterOutlet>
@@ -72,7 +81,7 @@ const Routes: FC = () => {
         />
       </IonRouterOutlet>
 
-      {mQuery && !mQuery.matches ? (
+      {showTabs && mQuery && !mQuery.matches ? (
         <IonTabBar slot='bottom'>
           <IonTabButton tab='home' href='/tabs/home'>
             <IonIcon icon={home} />

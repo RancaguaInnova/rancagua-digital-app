@@ -1,13 +1,12 @@
 import { FC } from 'react'
 import { Form, Input, Button, Row, Col } from 'antd'
-
-import { IdentificationForm } from 'components/Forms/IdentificationForm'
-import {
-  MailOutlined,
-  IdcardOutlined,
-  UserOutlined,
-  CalendarOutlined
-} from '@ant-design/icons'
+import { GenderInput } from 'components/Inputs/GenderInput'
+import { BirthDateInput } from 'components/Inputs/BirthDateInput'
+import { EmailInput } from 'components/Inputs/EmailInput'
+import { IdentificationInput } from 'components/Inputs/IdentificationInput'
+import { NameInput } from 'components/Inputs/NameInput'
+import { LastNameInput } from 'components/Inputs/LastNameInput'
+import { IdcardOutlined } from '@ant-design/icons'
 import { Subtitle } from './styles'
 
 interface PersonalInfoFormProps {
@@ -28,68 +27,16 @@ export const PersonalInfoForm: FC<PersonalInfoFormProps> = ({
   return (
     <>
       <Subtitle>Información Personal</Subtitle>
-      <Form.Item
-        name='name'
-        rules={[
-          {
-            required: true,
-            message: 'Por favor ingrese su Nombre'
-          }
-        ]}
-      >
-        <Input
-          prefix={<IdcardOutlined />}
-          placeholder='Ingrese su Nombre'
-          bordered={false}
-        />
-      </Form.Item>
-      <Form.Item
-        name='lastName'
-        rules={[
-          {
-            required: true,
-            message: 'Por favor ingrese su Apellido'
-          }
-        ]}
-      >
-        <Input
-          prefix={<IdcardOutlined />}
-          placeholder='Ingrese su Apellido'
-          bordered={false}
-        />
-      </Form.Item>
-      <IdentificationForm onChange={onChangeIdentification} />
 
-      <Form.Item
-        name='email'
-        rules={[
-          {
-            required: true,
-            message: 'Por favor ingrese su email'
-          }
-        ]}
-      >
-        <Input
-          prefix={<MailOutlined />}
-          placeholder='Ingrese su email'
-          bordered={false}
-        />
-      </Form.Item>
-
-      <Form.Item name='birthDate'>
-        <Input
-          prefix={<CalendarOutlined />}
-          placeholder='Ingrese su Fecha de Nacimiento'
-          bordered={false}
-        />
-      </Form.Item>
-      <Form.Item name='gender'>
-        <Input
-          prefix={<UserOutlined />}
-          placeholder='Género'
-          bordered={false}
-        />
-      </Form.Item>
+      <NameInput placeholder='Ingrese su Nombre' bordered={false} />
+      <LastNameInput placeholder='Ingrese su Apellido' bordered={false} />
+      <IdentificationInput placeholder='Ingrese su RUT' bordered={false} />
+      <EmailInput placeholder='Ingrese su email' bordered={false} />
+      <BirthDateInput
+        placeholder='Ingrese su Fecha de Nacimiento'
+        bordered={false}
+      />
+      <GenderInput placeholder='Género' bordered={false} />
     </>
   )
 }
