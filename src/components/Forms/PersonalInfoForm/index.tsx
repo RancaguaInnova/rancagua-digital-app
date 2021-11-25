@@ -28,15 +28,15 @@ export const PersonalInfoForm: FC<PersonalInfoFormProps> = ({
     <>
       <Subtitle>Información Personal</Subtitle>
 
-      <NameInput placeholder='Ingrese su Nombre' bordered={false} />
-      <LastNameInput placeholder='Ingrese su Apellido' bordered={false} />
-      <IdentificationInput placeholder='Ingrese su RUT' bordered={false} />
-      <EmailInput placeholder='Ingrese su email' bordered={false} />
+      <NameInput placeholder='Ingrese su Nombre' bordered={true} />
+      <LastNameInput placeholder='Ingrese su Apellido' bordered={true} />
+      <IdentificationInput placeholder='Ingrese su RUT' bordered={true} />
+      <EmailInput placeholder='Ingrese su email' bordered={true} />
       <BirthDateInput
         placeholder='Ingrese su Fecha de Nacimiento'
-        bordered={false}
+        bordered={true}
       />
-      <GenderInput placeholder='Género' bordered={false} />
+      <GenderInput placeholder='Género' bordered={true} />
     </>
   )
 }
