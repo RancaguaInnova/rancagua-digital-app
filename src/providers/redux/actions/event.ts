@@ -6,14 +6,15 @@ import { url } from "providers/urlprovider";
 
 axios.defaults.baseURL = url;
 
-export const GetListEvents = (date:string) => {
-  console.log("test");
+export const GetListEvents = (date: string) => {
   return async (dispach: Dispatch) => {
     try {
       let events: Event[] = [];
-      const { data, status } = await axios.get(`/city/events/app/list?date=${date}&limit=10`);
+      const { data, status } = await axios.get(
+        `/city/events/app/list?date=${date}&limit=10`
+      );
       if (status === 200) {
-        console.log(data)
+        console.log(data);
         events = data;
         dispach(eventList(events));
       } else {
@@ -25,13 +26,12 @@ export const GetListEvents = (date:string) => {
   };
 };
 
-export const GetEvent = (id:string) => {
- 
+export const GetEvent = (id: string) => {
   return async (dispach: Dispatch) => {
     try {
       const { data, status } = await axios.get(`/city/events/${id}`);
       if (status === 200) {
-        console.log(data)
+        console.log(data);
         dispach(event(data));
       } else {
         console.log(status);
@@ -47,7 +47,6 @@ export const eventList = (events: Event[]) => {
     type: types.GET_LIST_EVENTS,
     payload: {
       eventList: events,
-      
     },
   };
 };
@@ -56,7 +55,6 @@ export const event = (evento: Event) => {
     type: types.GET_EVENT,
     payload: {
       event: evento,
-      
     },
   };
 };
