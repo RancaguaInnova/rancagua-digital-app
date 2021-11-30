@@ -28,7 +28,6 @@ export const PasswordForm: FC<PasswordFormProps> = ({
           prefix={<LockOutlined className='site-form-item-icon' />}
           type='password'
           placeholder='Contraseña'
-          bordered={false}
         />
       </Form.Item>
       <Form.Item
@@ -44,7 +43,6 @@ export const PasswordForm: FC<PasswordFormProps> = ({
           prefix={<LockOutlined className='site-form-item-icon' />}
           type='password'
           placeholder='Repetir Contraseña'
-          bordered={false}
         />
       </Form.Item>
     </>

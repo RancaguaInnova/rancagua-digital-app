@@ -30,32 +30,20 @@ export const ContactInformationForm: FC<ContactInformationFormProps> = ({
           prefix={<EnvironmentOutlined />}
           type='text'
           placeholder='Nombre de calle o avenida'
-          bordered={false}
         />
       </Form.Item>
       <Form.Item name='number'>
-        <Input
-          prefix={<NumberOutlined />}
-          type='text'
-          placeholder='Número'
-          bordered={false}
-        />
+        <Input prefix={<NumberOutlined />} type='text' placeholder='Número' />
       </Form.Item>
       <Form.Item name='block'>
         <Input
           prefix={<NumberOutlined />}
           type='text'
           placeholder='Departamento'
-          bordered={false}
         />
       </Form.Item>
       <Form.Item name='block'>
-        <Input
-          prefix={<PhoneOutlined />}
-          type='text'
-          placeholder='Teléfono'
-          bordered={false}
-        />
+        <Input prefix={<PhoneOutlined />} type='text' placeholder='Teléfono' />
       </Form.Item>
     </>
   )

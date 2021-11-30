@@ -18,15 +18,15 @@ export const LoginForm: FC<LoginFormProps> = ({
   const [form] = Form.useForm()
   return (
     <Form
-      name="normal_login"
+      name='normal_login'
       form={form}
-      className="login-form"
+      className='login-form'
       initialValues={{ email: '', password: '' }}
       onFinish={onSubmit}
       scrollToFirstError
     >
       <Form.Item
-        name="email"
+        name='email'
         rules={[
           { type: 'email', message: 'Ingrese un email válido' },
           {
@@ -36,14 +36,13 @@ export const LoginForm: FC<LoginFormProps> = ({
         ]}
       >
         <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Email"
-          bordered={false}
+          prefix={<UserOutlined className='site-form-item-icon' />}
+          placeholder='Email'
         />
       </Form.Item>
 
       <Form.Item
-        name="password"
+        name='password'
         rules={[
           {
             required: true,
@@ -52,21 +51,20 @@ export const LoginForm: FC<LoginFormProps> = ({
         ]}
       >
         <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Contraseña"
-          bordered={false}
+          prefix={<LockOutlined className='site-form-item-icon' />}
+          type='password'
+          placeholder='Contraseña'
         />
       </Form.Item>
 
       <Form.Item>
-        <Row justify="center">
-          <Col span="8" md="4" lg="4">
+        <Row justify='center'>
+          <Col span='8' md='4' lg='4'>
             <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              shape="round"
+              type='primary'
+              htmlType='submit'
+              className='login-form-button'
+              shape='round'
               disabled={loading}
               loading={loading}
               block
@@ -77,18 +75,17 @@ export const LoginForm: FC<LoginFormProps> = ({
         </Row>
       </Form.Item>
 
-      <Row justify="center">
-        {error !== '' &&
-          <CustomCol span="24">
-            <Error>
-              {error}
-            </Error>
-          </CustomCol>}
-        <CustomCol span="24">
-          <Link to="/tabs/profile">Crear una cuenta</Link>
+      <Row justify='center'>
+        {error !== '' && (
+          <CustomCol span='24'>
+            <Error>{error}</Error>
+          </CustomCol>
+        )}
+        <CustomCol span='24'>
+          <Link to='/tabs/profile'>Crear una cuenta</Link>
         </CustomCol>
-        <CustomCol span="24">
-          <a href="">Olvide mi contraseña</a>
+        <CustomCol span='24'>
+          <a href=''>Olvide mi contraseña</a>
         </CustomCol>
       </Row>
     </Form>
