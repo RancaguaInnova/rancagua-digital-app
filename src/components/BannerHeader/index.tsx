@@ -8,6 +8,8 @@ import { CarouselStyled, DivBanner } from "./styles";
 import openCapacitorSite from "components/openCapacitorBrowser";
 import { useHistory } from "react-router-dom";
 import { notification } from "antd";
+import { setRouterBack } from "providers/redux/actions/route";
+
 interface BannerHeaderProps {
 
   session: Session;
@@ -58,6 +60,7 @@ const BannerHeader: React.FC<BannerHeaderProps> = ({ session, sessionLoading }) 
       openCapacitorSite(urlBanner);
     } else {
       openNotification();
+      dispatch(setRouterBack("/tabs/home"));
       history.push('/tabs/login')
     }
 
