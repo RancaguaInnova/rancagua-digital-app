@@ -35,8 +35,7 @@ const openNotification = () => {
   notification.warning({
     message: "Inicio de sesión requerido",
 
-    description:
-      "Para acceder a esta aplicación, primero debes iniciar sesión.",
+    description: "Para acceder a esta servicio, primero debes iniciar sesión.",
     duration: 8,
     onClick: () => {
       console.log("Notification Clicked!");

@@ -13,3 +13,7 @@ export const CarouselStyled = styled(Carousel)`
   padding: 3px;
   backdrop-filter: blur(5px);
 `;
+
+export const DivBanner = styled.div`
+  cursor: pointer;
+`;
