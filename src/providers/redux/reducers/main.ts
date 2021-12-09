@@ -4,6 +4,7 @@ import { tweetReducer } from "./tweet";
 import { applicationReducer } from "./application";
 import { eventReducer } from "./event";
 import { bannerReducer } from "./banner";
+import { routeReducer } from "./route";
 
 //aca agregar todos los reducers
 export const mainReducer = combineReducers({
@@ -12,4 +13,5 @@ export const mainReducer = combineReducers({
   application: applicationReducer,
   event: eventReducer,
   banner: bannerReducer,
+  route: routeReducer,
 });

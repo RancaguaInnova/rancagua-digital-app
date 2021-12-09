@@ -18,6 +18,7 @@ export const AUTH_LOADING = "AUTH_LOADING";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
+export const SET_ROUTE_BACK = "SET_ROUTE_BACK";
 
 const types = {
   GET_APPLICATION,
@@ -31,5 +32,6 @@ const types = {
   AUTH_SUCCESS,
   AUTH_LOGOUT,
   GET_LIST_BANNERS,
+  SET_ROUTE_BACK,
 };
 export default types;

@@ -11,8 +11,10 @@ import { Container, LoginFormContainer, Title } from './styles'
 
 export const LoginBox: FC = () => {
   const dispatch = useDispatch()
-  const { error, loading, session } = useSelector((state: any) => state.auth)
-  const refUrl = '/tabs/home'
+  const { auth: { error, loading, session }, route: { routeBack } } = useSelector((state: any) => state)
+
+
+  const refUrl = routeBack
 
   const onSubmit = (data: AuthCredentials) => {
     dispatch(login(data))

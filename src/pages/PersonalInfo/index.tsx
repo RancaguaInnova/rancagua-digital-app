@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { IonContent, IonPage, useIonRouter } from '@ionic/react'
+import React, { } from 'react'
+import { IonContent, IonPage } from '@ionic/react'
 import Header from 'components/Header'
 import { Col, Row } from 'antd'
 import { PersonalInfoBox } from 'containers/PersonalInfoBox'
 
-interface PersonalInfoProps {}
+interface PersonalInfoProps { }
 
 const PersonalInfo: React.FC<PersonalInfoProps> = () => {
   return (
